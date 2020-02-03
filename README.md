@@ -12,7 +12,7 @@ These instructions will get you a copy of the project up and running on your loc
 This application was made in Android Studio's lastest version 3.5.3 for Windows 10
 
 * Git
-* Andriod Studio
+* Android Studio
 
 ### Installing
 
