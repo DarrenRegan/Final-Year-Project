@@ -30,9 +30,13 @@ asd
 
 End with an example of getting some data out of the system or using it for a little demo
 
-## Running the tests
+## Testing 
 
-Explain how to run the automated tests for this system
+Testing & Test Plan are provided in an excel file included in this repo called Test Plan.xlsx
+
+Testing Devices used
+* Windows 10 Home & Pro edition - Laptop & Desktop
+* Android Studio Emulators
 
 ### Break down into end to end tests
 
