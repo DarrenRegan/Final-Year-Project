@@ -75,7 +75,8 @@ This project is licensed under the GNU General Public License - see the [LICENSE
 * [Firebase Docs](https://firebase.google.com/docs)
 * [Kotlin Docs](https://kotlinlang.org/docs/reference/)
 
-React Native vs Kotlin Article/Blogs
+*React Native vs Kotlin Article/Blogs*
+
 https://stackshare.io/stackups/kotlin-vs-react-native)
 https://www.netguru.com/codestories/react-native-vs-kotlin-multiplatform
 https://hackernoon.com/top-pros-cons-comparison-react-native-vs-kotlin-2a0dfd1df3e3
