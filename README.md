@@ -11,24 +11,21 @@ These instructions will get you a copy of the project up and running on your loc
 
 This application was made in Android Studio's lastest version 3.5.3 for Windows 10
 
-```
-Give examples
-```
+* Git
+* Andriod Studio
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+1. Clone the repo
 
 ```
-Give the example
+git clone https://github.com/DarrenRegan/Final-Year-Project.git
 ```
 
-And repeat
+2. asd
 
 ```
-until finished
+asd
 ```
 
 End with an example of getting some data out of the system or using it for a little demo
