@@ -1,13 +1,15 @@
 # Final-Year-Project
 E-commerce application made with Kotlin in Android Studio
 
+Goal of this project is to learn Native android development throught he use of Android Studio, Kotlin and the use of Google products such as Firebase, Google Pay etc.
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+This application was made in Android Studio's lastest version 3.5.3 for Windows 10
 
 ```
 Give examples
@@ -57,12 +59,12 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Andriod Studio](https://developer.android.com/studio)
+* [Android Studio](https://developer.android.com/studio)
 * [Kotlin](https://kotlinlang.org/)
 * [Firebase](https://square.github.io/picasso/)
 * [Picasso](https://firebase.google.com/)
 
-## Authors
+## Author
 
 * [Darren Regan](https://github.com/DarrenRegan)
 
