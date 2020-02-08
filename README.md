@@ -89,4 +89,4 @@ This project is licensed under the GNU General Public License - see the [LICENSE
 * https://www.netguru.com/codestories/react-native-vs-kotlin-multiplatform
 * https://hackernoon.com/top-pros-cons-comparison-react-native-vs-kotlin-2a0dfd1df3e3
 * https://dzone.com/articles/kotlin-vs-react-native-which-is-better
-* 
+
