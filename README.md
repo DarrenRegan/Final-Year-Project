@@ -22,7 +22,7 @@ This application was made in Android Studio's lastest version 3.5.3 for Windows 
 git clone https://github.com/DarrenRegan/Final-Year-Project.git
 ```
 
-2. asd
+2. Open Project in Android Studio
 
 ```
 asd
