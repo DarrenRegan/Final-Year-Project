@@ -20,12 +20,31 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/mobile_navigation"
         />
-    
+
     <TextView
+        android:id='@+id/aoo_slogan'
         android:layout_width="220dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginTop="232dp"
+        android:text="Search around and Buy!"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id='@+id/app_logo'
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="132dp"
+        android:src="@drawable/gmitlogo"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
