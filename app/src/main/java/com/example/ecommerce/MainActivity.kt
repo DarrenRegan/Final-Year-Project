@@ -18,8 +18,8 @@ import android.widget.Button
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
-
-    lateinit var buttonSave: Button
+    private lateinit var joinNowButton: Button
+    private lateinit var loginButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +36,9 @@ class MainActivity : AppCompatActivity() {
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
+
+        joinNowButton = findViewById(R.id.main_join_now_btn)
+        joinNowButton = findViewById(R.id.main_login_btn)
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
