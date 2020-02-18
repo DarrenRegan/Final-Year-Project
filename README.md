@@ -1,7 +1,7 @@
 # Final-Year-Project
 E-commerce application made with Kotlin in Android Studio
 
-Goal of this project is to learn Native android development throught he use of Android Studio, Kotlin and the use of Google products such as Firebase, Google Pay etc.
+Goal of this project is to learn Native android development throught he use of Android Studio, Kotlin/Java and the use of Google services such as Firebase, Google Pay etc.
 
 ## Getting Started
 
