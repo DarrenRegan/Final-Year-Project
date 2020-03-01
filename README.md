@@ -80,6 +80,7 @@ This project is licensed under the GNU General Public License - see the [LICENSE
 
 * [Firebase Docs](https://firebase.google.com/docs)
 * [Kotlin Docs](https://kotlinlang.org/docs/reference/)
+* [Badges/Shields for README](https://github.com/badges/shields)
 
 **Learning Material**
 
