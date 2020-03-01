@@ -82,6 +82,7 @@ This project is licensed under the GNU General Public License - see the [LICENSE
 
 * https://developer.android.com/kotlin/learn
 * https://codelabs.developers.google.com/codelabs/build-your-first-android-app-kotlin/#0
+* http://rey5137.com/material/
 
 **React Native vs Kotlin Article/Blogs**
 
