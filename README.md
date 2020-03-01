@@ -1,4 +1,4 @@
-[![GitHub release](https://img.shields.io/badge/Build-B-green)](https://github.com/DarrenRegan/Final-Year-Project/releases/download/latest/EcommereceApp.apk)
+[![GitHub release](https://img.shields.io/badge/Click to download Build-Passing-green)](https://github.com/DarrenRegan/Final-Year-Project/releases/latest/downloadEcommereceApp.apk)
 
 # Final-Year-Project
 E-commerce application made with Kotlin in Android Studio
