@@ -16,6 +16,7 @@ import androidx.appcompat.widget.Toolbar
 import android.view.Menu
 import android.view.View
 import android.widget.Button
+import android.view.View.OnClickListener;
 
 class MainActivity : AppCompatActivity() {
 
@@ -42,8 +43,8 @@ class MainActivity : AppCompatActivity() {
         joinNowButton = findViewById(R.id.main_join_now_btn)
         loginButton = findViewById(R.id.main_login_btn)
 
-        loginButton.setOnClickListener(View.OnClickListener {
-            fun onClick(view:View) {
+        loginButton.setOnClickListener(object:View.OnClickListener{
+            override fun onClick(view:View) {
                 val intent = Intent(this@MainActivity, LoginActivity::class.java)
                 startActivity(intent)
             }
