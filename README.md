@@ -1,4 +1,4 @@
-[![GitHub release](https://img.shields.io/github/release/PoE-TradeMacro/PoE-TradeMacro.svg)](https://github.com/DarrenRegan/Final-Year-Project/releases)
+[![GitHub release]()](https://github.com/DarrenRegan/Final-Year-Project/releases)
 
 # Final-Year-Project
 E-commerce application made with Kotlin in Android Studio
