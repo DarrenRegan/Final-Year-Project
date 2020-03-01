@@ -1,4 +1,4 @@
-[![GitHub release](https://img.shields.io/github/release)](https://github.com/DarrenRegan/Final-Year-Project/releases)
+[![GitHub release](https://img.shields.io/github/release)](https://github.com/DarrenRegan/Final-Year-Project/releases/download/EcommereceApp.apk)
 
 # Final-Year-Project
 E-commerce application made with Kotlin in Android Studio
