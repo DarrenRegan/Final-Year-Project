@@ -1,4 +1,4 @@
-[![GitHub release]()](https://github.com/DarrenRegan/Final-Year-Project/releases)
+[![GitHub release](v1)](https://github.com/DarrenRegan/Final-Year-Project/releases)
 
 # Final-Year-Project
 E-commerce application made with Kotlin in Android Studio
