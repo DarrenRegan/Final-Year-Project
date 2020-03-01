@@ -1,5 +1,6 @@
 package com.example.ecommerce
 
+import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
@@ -13,6 +14,7 @@ import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
+import android.view.View
 import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
@@ -38,7 +40,16 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
 
         joinNowButton = findViewById(R.id.main_join_now_btn)
-        joinNowButton = findViewById(R.id.main_login_btn)
+        loginButton = findViewById(R.id.main_login_btn)
+
+        loginButton.setOnClickListener(View.OnClickListener {
+            fun onClick(view:View) {
+                val intent = Intent(this@MainActivity, LoginActivity::class.java)
+                startActivity(intent)
+            }
+        })
+
+
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
