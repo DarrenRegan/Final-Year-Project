@@ -1,4 +1,4 @@
-[![GitHub release](https://img.shields.io/badge/Build-Passing-green)](https://github.com/DarrenRegan/Final-Year-Project/releases/latest/download/EcommereceApp.apk)
+[![GitHub release](https://img.shields.io/badge/Download-APK-green)](https://github.com/DarrenRegan/Final-Year-Project/releases/latest/download/EcommereceApp.apk)
 [![GitHub release](https://img.shields.io/badge/Download-Dissertation-green)](https://github.com/DarrenRegan/Final-Year-Project/raw/master/Final_Year_Dissertation.pdf)
 
 # Final-Year-Project
