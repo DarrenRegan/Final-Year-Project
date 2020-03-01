@@ -61,6 +61,23 @@
         android:layout_marginTop="5dp"
         >
 
+        <CheckBox
+            android:id="@+id/remember_me_chk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Material.Drawable.CheckBox"
+            android:text="Remember me"
+            android:textColor="@color/colorPrimaryDark"
+            app:cbd_strokeColor="@color/colorPrimaryDark"
+            android:gravity="center_vertical"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="17dp"
+            />
+
+
+
+
     </LinearLayout>
 
 
