@@ -1,11 +1,13 @@
 package com.example.ecommerce
 
+import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.Toast
 
 class RegisterActivity : AppCompatActivity() {
@@ -14,6 +16,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var InputName: EditText
     private lateinit var InputPhoneNumber: EditText
     private lateinit var InputPassword: EditText
+    private lateinit var loadingBar: ProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +27,7 @@ class RegisterActivity : AppCompatActivity() {
         InputName = findViewById(R.id.register_user_name_input)
         InputPhoneNumber = findViewById(R.id.register_phone_number_input)
         InputPassword = findViewById(R.id.register_password_input)
+        loadingBar = ProgressDialog(this)
 
         CreateAccountButton.setOnClickListener{
             CreateAccount()
@@ -44,6 +48,14 @@ class RegisterActivity : AppCompatActivity() {
         }
         else if (TextUtils.isEmpty(password)){
             Toast.makeText(this, "Write your password... ", Toast.LENGTH_SHORT).show()
+        }
+        else{
+            loadingBar.setTitle("Create Account")
+            loadingBar.setMessage("Please wait, while we validate your information.")
+            loadingBar.setCanceledOnTouchOutside(false)
+            loadingBar.show()
+            
+
         }
 
 
