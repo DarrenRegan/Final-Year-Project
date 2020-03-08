@@ -9,6 +9,12 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+
+
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -54,10 +60,36 @@ class RegisterActivity : AppCompatActivity() {
             loadingBar.setMessage("Please wait, while we validate your information.")
             loadingBar.setCanceledOnTouchOutside(false)
             loadingBar.show()
-            
+
+            ValidatePhoneNumber(name, phone, password)
 
         }
 
 
     }
+
+    private fun ValidatePhoneNumber(name: String, phone: String, password: String) {
+
+        val RootRef:DatabaseReference
+        RootRef = FirebaseDatabase.getInstance().getReference()
+
+        RootRef.addListenerForSingleValueEvent(object: ValueEventListener{
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                //val post = dataSnapshot.getValue(String::class.java)
+                //Update the UI with received data
+                if (!(dataSnapshot.child("Users").child(phone).exists())){
+
+                }
+                else{
+                    Toast.makeText(this@RegisterActivity, "This ", Toast.LENGTH_SHORT).show()
+                }
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                //print error.message
+            }
+        })//Listener
+
+    }//end of method
 }

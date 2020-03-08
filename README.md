@@ -88,6 +88,7 @@ This project is licensed under the GNU General Public License - see the [LICENSE
 * https://codelabs.developers.google.com/codelabs/build-your-first-android-app-kotlin/#0
 * http://rey5137.com/material/
 * [onCClickListener with Intent](https://www.youtube.com/watch?v=ukh3zOLNhmY)
+* [Validation for Database](https://firebaseopensource.com/projects/rosariopfernandes/firextensions/tutorials/realtime-database.md/)
 
 **React Native vs Kotlin Article/Blogs**
 
