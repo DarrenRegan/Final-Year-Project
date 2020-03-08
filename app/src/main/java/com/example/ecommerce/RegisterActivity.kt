@@ -9,11 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-
+import com.google.firebase.database.*
 
 
 class RegisterActivity : AppCompatActivity() {
@@ -81,7 +77,9 @@ class RegisterActivity : AppCompatActivity() {
 
                 }
                 else{
-                    Toast.makeText(this@RegisterActivity, "This ", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@RegisterActivity, "This " + phone + "already exists.", Toast.LENGTH_SHORT).show()
+                    loadingBar.dismiss()
+                    Toast.makeText(this@RegisterActivity, "Please try another number", Toast.LENGTH_SHORT).show()
                 }
 
             }
