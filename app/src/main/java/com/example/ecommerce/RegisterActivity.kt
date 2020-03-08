@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.database.*
 
 
+@Suppress("DEPRECATION")
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var CreateAccountButton: Button
@@ -60,14 +61,12 @@ class RegisterActivity : AppCompatActivity() {
             loadingBar.setCanceledOnTouchOutside(false)
             loadingBar.show()
 
-            ValidatePhoneNumber(name, phone, password)
+            validatePhoneNumber(name, phone, password)
 
         }
-
-
     }
 
-    private fun ValidatePhoneNumber(name: String, phone: String, password: String) {
+    private fun validatePhoneNumber(name: String, phone: String, password: String) {
 
         val RootRef:DatabaseReference
         RootRef = FirebaseDatabase.getInstance().getReference()
@@ -86,15 +85,20 @@ class RegisterActivity : AppCompatActivity() {
                         .addOnCompleteListener(object: OnCompleteListener<Void>{
                             override fun onComplete(@NonNull task: Task<Void>){
                                 if (task.isSuccessful()){
-                                    
+                                    Toast.makeText(this@RegisterActivity, "Your Account has been created.", Toast.LENGTH_SHORT).show()
+                                    loadingBar.dismiss()
+
+                                    val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+                                    startActivity(intent)
+
+                                }//if
+                                else{
+                                    loadingBar.dismiss()
+                                    Toast.makeText(this@RegisterActivity, "Network Error: Please Try Again...", Toast.LENGTH_SHORT).show()
                                 }
-                            }
-
-
-                        })
-
-
-                }
+                            }//onComplete
+                        })//addOnCompleteListener
+                }//Data
                 else{
                     Toast.makeText(this@RegisterActivity, "This " + phone + "already exists.", Toast.LENGTH_SHORT).show()
                     loadingBar.dismiss()
@@ -103,8 +107,7 @@ class RegisterActivity : AppCompatActivity() {
                     val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
                     startActivity(intent)
                 }
-
-            }
+            }//onDataChange
 
             override fun onCancelled(error: DatabaseError) {
                 //print error.message

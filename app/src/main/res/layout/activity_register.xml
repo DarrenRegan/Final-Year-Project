@@ -26,7 +26,7 @@
         android:layout_marginRight="15dp"
         android:background="@drawable/input_design"
         android:hint="Name"
-        android:inputType="number"
+        android:inputType="text"
         android:padding="20dp"
         android:textColor="@color/colorPrimaryDark"
         android:textColorHint="@color/colorPrimaryDark"
