@@ -3,8 +3,10 @@ package com.example.ecommerce
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -34,6 +36,16 @@ class RegisterActivity : AppCompatActivity() {
         var phone = InputPhoneNumber.text.toString()
         var password = InputPassword.text.toString()
 
-        
+        if (TextUtils.isEmpty(name)){
+            Toast.makeText(this, "Write your name... ", Toast.LENGTH_SHORT).show()
+        }
+        else if (TextUtils.isEmpty(phone)){
+            Toast.makeText(this, "Write your phone number... ", Toast.LENGTH_SHORT).show()
+        }
+        else if (TextUtils.isEmpty(password)){
+            Toast.makeText(this, "Write your password... ", Toast.LENGTH_SHORT).show()
+        }
+
+
     }
 }
