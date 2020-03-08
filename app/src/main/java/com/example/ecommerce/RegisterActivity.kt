@@ -65,7 +65,7 @@ class RegisterActivity : AppCompatActivity() {
 
         }
     }
-
+    //WORKS AFTER TESTING - SCHEMA USERS - KEY PHONENUMBER - DETAILS NAME:< PASSWORD:< PHONE:
     private fun validatePhoneNumber(name: String, phone: String, password: String) {
 
         val RootRef:DatabaseReference
