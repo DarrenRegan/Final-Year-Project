@@ -23,7 +23,7 @@ class LoginActivity : AppCompatActivity() {
         InputPassword = findViewById(R.id.login_password_input)
         loadingBar = ProgressDialog(this)
 
-        
+
 
 
 
