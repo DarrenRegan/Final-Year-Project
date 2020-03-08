@@ -1,5 +1,6 @@
 package com.example.ecommerce
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -21,7 +22,6 @@ class RegisterActivity : AppCompatActivity() {
         InputName = findViewById(R.id.register_user_name_input)
         InputPhoneNumber = findViewById(R.id.register_phone_number_input)
         InputPassword = findViewById(R.id.register_password_input)
-
 
     }
 }

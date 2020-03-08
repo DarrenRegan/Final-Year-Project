@@ -48,10 +48,16 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(view.context, LoginActivity::class.java)
             view.context.startActivity(intent)
         }
+        /*
+        // UNCOMMENT TO TEST LoginActivity
+        joinNowButton.setOnClickListener{view ->
+            val intent = Intent(view.context, LoginActivity::class.java)
+            view.context.startActivity(intent)
+        } */
 
         //, LoginActivity::class.java
         joinNowButton.setOnClickListener{view ->
-            val intent = Intent(view.context, LoginActivity::class.java)
+            val intent = Intent(view.context, RegisterActivity::class.java)
             view.context.startActivity(intent)
         }
 
@@ -66,7 +72,7 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-    }
+    } //onCreate end
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
