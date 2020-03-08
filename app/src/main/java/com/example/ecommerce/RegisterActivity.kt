@@ -9,6 +9,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.annotation.NonNull
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
 import com.google.firebase.database.*
 
 
@@ -74,12 +77,31 @@ class RegisterActivity : AppCompatActivity() {
                 //val post = dataSnapshot.getValue(String::class.java)
                 //Update the UI with received data
                 if (!(dataSnapshot.child("Users").child(phone).exists())){
+                    val childUpdates = HashMap<String, Any>()
+                    childUpdates.put("phone", phone)
+                    childUpdates.put("password", password)
+                    childUpdates.put("name", name)
+
+                    RootRef.child("Users").child(phone).updateChildren(childUpdates)
+                        .addOnCompleteListener(object: OnCompleteListener<Void>{
+                            override fun onComplete(@NonNull task: Task<Void>){
+                                if (task.isSuccessful()){
+                                    
+                                }
+                            }
+
+
+                        })
+
 
                 }
                 else{
                     Toast.makeText(this@RegisterActivity, "This " + phone + "already exists.", Toast.LENGTH_SHORT).show()
                     loadingBar.dismiss()
                     Toast.makeText(this@RegisterActivity, "Please try another number", Toast.LENGTH_SHORT).show()
+
+                    val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+                    startActivity(intent)
                 }
 
             }
