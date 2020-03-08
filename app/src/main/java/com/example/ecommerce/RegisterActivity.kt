@@ -23,5 +23,17 @@ class RegisterActivity : AppCompatActivity() {
         InputPhoneNumber = findViewById(R.id.register_phone_number_input)
         InputPassword = findViewById(R.id.register_password_input)
 
+        CreateAccountButton.setOnClickListener{
+            CreateAccount()
+        }
+
+    }
+
+    private fun CreateAccount() {
+        var name = InputName.text.toString()
+        var phone = InputPhoneNumber.text.toString()
+        var password = InputPassword.text.toString()
+
+        
     }
 }
