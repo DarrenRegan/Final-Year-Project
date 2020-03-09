@@ -1,6 +1,7 @@
 package com.example.ecommerce
 
 import android.app.ProgressDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -74,6 +75,9 @@ class LoginActivity : AppCompatActivity() {
                         if (usersData?.getPassword().equals(password)){
                             Toast.makeText(this@LoginActivity, "Login Successful", Toast.LENGTH_SHORT).show()
                             loadingBar.dismiss()
+                            //Sends user to HomeActivity
+                            val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+                            startActivity(intent)
                         }
                     }//getPhone if
 
