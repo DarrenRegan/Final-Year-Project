@@ -16,6 +16,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var InputPhoneNumber: EditText
     private lateinit var LoginButton: Button
     private lateinit var loadingBar: ProgressDialog
+    private val parentDbName = "Users"
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,6 +67,14 @@ class LoginActivity : AppCompatActivity() {
         RootRef.addListenerForSingleValueEvent(object: ValueEventListener {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                if(dataSnapshot.child(parentDbName).child(phone).exists()){
+
+                }
+                else{
+                    Toast.makeText(this@LoginActivity, "Account with this " + phone + " Number does not exist", Toast.LENGTH_SHORT).show()
+                    loadingBar.dismiss()
+                }
             }
 
             override fun onCancelled(p0: DatabaseError) {
