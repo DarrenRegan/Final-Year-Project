@@ -3,8 +3,10 @@ package com.example.ecommerce
 import android.app.ProgressDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 
 @Suppress("DEPRECATION")
 class LoginActivity : AppCompatActivity() {
@@ -25,10 +27,24 @@ class LoginActivity : AppCompatActivity() {
 
 
 
-
+        LoginButton.setOnClickListener{
+            LoginUser()
+        }
 
 
 
 
     }
+
+    private fun LoginUser() {
+        var phone = InputPhoneNumber.text.toString()
+        var password = InputPassword.text.toString()
+
+        if (TextUtils.isEmpty(phone)){
+            Toast.makeText(this, "Write your phone number... ", Toast.LENGTH_SHORT).show()
+        }
+        else if (TextUtils.isEmpty(password)){
+            Toast.makeText(this, "Write your password... ", Toast.LENGTH_SHORT).show()
+        }
+    }//LoginUser
 }
