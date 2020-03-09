@@ -7,6 +7,7 @@ import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.google.firebase.database.*
 
 @Suppress("DEPRECATION")
 class LoginActivity : AppCompatActivity() {
@@ -46,5 +47,30 @@ class LoginActivity : AppCompatActivity() {
         else if (TextUtils.isEmpty(password)){
             Toast.makeText(this, "Write your password... ", Toast.LENGTH_SHORT).show()
         }
+        else{
+            loadingBar.setTitle("Login Account")
+            loadingBar.setMessage("Please wait, while we validate your information.")
+            loadingBar.setCanceledOnTouchOutside(false)
+            loadingBar.show()
+            
+            AllowAccessToAccount(phone, password)
+        }
     }//LoginUser
+
+    private fun AllowAccessToAccount(phone: String, password: String) {
+
+        val RootRef: DatabaseReference
+        RootRef = FirebaseDatabase.getInstance().getReference()
+
+        RootRef.addListenerForSingleValueEvent(object: ValueEventListener {
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+            })
+
+    }
 }
