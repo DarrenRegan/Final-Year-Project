@@ -7,6 +7,8 @@ import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.ecommerce.Model.Users
+import com.firebase.ui.auth.data.model.User
 import com.google.firebase.database.*
 
 @Suppress("DEPRECATION")
@@ -33,11 +35,7 @@ class LoginActivity : AppCompatActivity() {
         LoginButton.setOnClickListener{
             LoginUser()
         }
-
-
-
-
-    }
+    }//onCreate
 
     private fun LoginUser() {
         var phone = InputPhoneNumber.text.toString()
@@ -68,7 +66,10 @@ class LoginActivity : AppCompatActivity() {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
+                //var userData:Users
                 if(dataSnapshot.child(parentDbName).child(phone).exists()){
+                    var usersData = dataSnapshot.child(parentDbName).child(phone).getValue(Users::class.java)
+                    usersData?.getName()
 
                 }
                 else{

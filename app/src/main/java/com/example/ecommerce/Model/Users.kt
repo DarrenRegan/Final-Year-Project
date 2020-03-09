@@ -14,7 +14,28 @@ class Users {
         this.phone = phone
     }
 
+    fun getName():String {
+        return name
+    }
 
+    fun getPassword():String {
+        return password
+    }
 
+    fun getPhone():String {
+        return phone
+    }
+
+    fun setName(name:String) {
+        this.name = name
+    }
+
+    fun setPassword(password: String) {
+        this.password = password
+    }
+
+    fun setPhone(phone:String) {
+        this.phone = phone
+    }
 
 }
