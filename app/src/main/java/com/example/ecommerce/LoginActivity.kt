@@ -69,7 +69,14 @@ class LoginActivity : AppCompatActivity() {
                 //var userData:Users
                 if(dataSnapshot.child(parentDbName).child(phone).exists()){
                     var usersData = dataSnapshot.child(parentDbName).child(phone).getValue(Users::class.java)
-                    usersData?.getName()
+
+                    if (usersData?.getPhone().equals(phone)){
+                        if (usersData?.getPassword().equals(password)){
+                            Toast.makeText(this@LoginActivity, "Login Successful", Toast.LENGTH_SHORT).show()
+                            loadingBar.dismiss()
+                        }
+                    }//getPhone if
+
 
                 }
                 else{
