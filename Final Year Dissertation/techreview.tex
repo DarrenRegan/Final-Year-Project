@@ -59,7 +59,94 @@ Kotlin has many advantages, many are quite serious improvements in readability a
     \item \textbf{Limited learning resources} - Although the number of Android app developers who use Kotlin instead of Java increase everyday, there is still a limited number of resources in the market compared to Java. Many College courses will teach Java over Kotlin as both are so similar, meaning most Kotlin developers come from a background in Java and learn to code in Kotlin themselves.
 \end{itemize}
 
+\newpage
+\subsubsection{Kotlin Syntax}
+Kotlin syntax is familiar to any programmer that is from a OOP domain and be be more or less understood from the get-go. There are differences from Java such as primary and secondary constructors, val \& var variable declarations and more.
+\newline
 
+\textbf{Below you can see the basic structure of a class in kotlin}
+\begin{lstlisting}
+class Foo {
+
+    val b: String = "b"     // val means unmodifiable
+    var i: Int = 0          // var means modifiable
+
+    fun hello() {
+        val str = "Hello"
+        print("$str World")
+    }
+
+    fun sum(x: Int, y: Int): Int {
+        return x + y
+    }
+
+    fun maxOf(a: Float, b: Float) = if (a > b) a else b
+
+}
+\end{lstlisting}
+
+\textbf{String Interpolation} - A smarter and more readable version of Java's String.format() that is built into the language
+\begin{lstlisting}
+val x = 5
+val y = 10
+print("sum of $x and $y is ${x + y}")  // sum of 5 and 10 is 15
+\end{lstlisting}
+
+\textbf{Type Inference} - Kotlin will infer your types wherever you feel it will improve readability
+\begin{lstlisting}
+val a = "abc"                         // type inferred to String
+val b = 4                             // type inferred to Int
+
+val c: Double = 0.7                   // type declared explicitly
+val d: List<String> = ArrayList()     // type declared explicitly
+\end{lstlisting}
+
+\textbf{Smart Casts} - The Kotlin compiler tracks logic and auto-casts types if possible, which means you do not need to use instanceof checks followed by explicit casts
+\begin{lstlisting}
+if (obj is String) {
+    print(obj.toUpperCase())     // obj is now known to be a String
+}
+\end{lstlisting}
+
+\textbf{When Expression} - The switch case is replaced with the more readable and flexible when() expression
+\begin{lstlisting}
+when (x) {
+    1 -> print("x is 1")
+    2 -> print("x is 2")
+    3, 4 -> print("x is 3 or 4")
+    in 5..10 -> print("x is 5, 6, 7, 8, 9, or 10")
+    else -> print("x is out of range")
+}
+
+// It also works as an expression or a statement
+// with or without an argument
+val res: Boolean = when {
+    obj == null -> false
+    obj is String -> true
+    else -> throw IllegalStateException()
+}
+\end{lstlisting}
+
+\textbf{Setter \& Getter behavior} - You can make custom set \& get behaviors that are added to public fields, which means getter \& setters won't bloat your code
+\begin{lstlisting}
+class Frame {
+    var width: Int = 800
+    var height: Int = 600
+
+    val pixels: Int
+        get() = width * height
+}
+\end{lstlisting}
+
+\textbf{Data Classes} - We frequently create classes whose main purpose is to hold data. In such a class some standard functionality and utility functions are often mechanically derivable from the data. In kotlin, this is called a data class and is marked as data. Its a Plain Old Java Object so its complete with toString(), equals(), hashCode() and copy().
+\begin{lstlisting}
+data class Person(val name: String,
+                  var email: String,
+                  var age: Int)
+
+val john = Person("John", "john@gmail.com", 112)
+}
+\end{lstlisting}
 
 \subsection{Kotlin vs Java}
 \par
@@ -68,6 +155,23 @@ Kotlin has many advantages, many are quite serious improvements in readability a
     \includegraphics[width=12cm,height=12cm,keepaspectratio]{Images/KotlinvJava.jpg}
 \end{center}
 
+blah..
+
+
+\subsubsection{Advantages}
+\begin{itemize}
+    \item \textbf{Shift from Java to Kotlin} - Kotlin
+    \item \textbf{Hard to find experienced developers} - asdas
+    \item \textbf{Limited learning resources} - Although
+\end{itemize}
+\subsubsection{Disadvantages}
+\begin{itemize}
+    \item \textbf{Shift from Java to Kotlin} - Kotlin
+    \item \textbf{Hard to find experienced developers} - asdas
+    \item \textbf{Limited learning resources} - Although
+\end{itemize}
+
+\newpage
 \subsection{Firebase}
 \par
 \medskip
@@ -75,12 +179,70 @@ Kotlin has many advantages, many are quite serious improvements in readability a
     \includegraphics[width=12cm,height=12cm,keepaspectratio]{Images/firebase.png}
 \end{center}
 
+Firebase is Google's mobile and web application development platform that helps you build, improve, and grow your application. Firebase frees developers to focus on crafting excellent user experiences. You don't need to manage servers. You don't need to write APIs. Firebase is your server, your API and your database, everything is written generically so that you can modify everything to suit most needs. Firebase has a huge amount of features, real time databases, cloud storage, hosting, machine learning, authentication, statistics, analytics and more.\newline
+
+Firebase products are setup in three different area's. Build better apps, Improve app quality \& Grow your business
+
+\subsubsection{Build better apps} Firebase lets you build more powerful, secure and scalable apps, using world-class infrastructure. There are seven different products focused on building a better app. My project takes advantage of Authenication, Realtime Database and Cloud storage. Almost all of Firebase products are extremely useful and are worth mentioning as they could be implemented into the project at some point.
+I will first summarize the products, and then go into further detail on the specific products i used in my project. How the code is implemented, why i used it etc.
+
+\newpage
+\subsubsection{Products for building better apps}
+\begin{itemize}
+    \item \textbf{Cloud Firestore} - Store and sync data between users and devices - at global scale - using a cloud-hosted, NOSQL database. Cloud Firestore gives you live synchronization and offline support along with efficient data queries. Its integration with other Firebase products enables you to build truly serverless apps.
+    \item \textbf{ML Kit} - Bring powerful machine learning features to your mobile app whether you're new or experienced in ML. Get started easily by using our ready-to-use APIs for common mobile use cases, or import your own custom models which can be hosted and served to your apps by Firebase. ML Kit APIs can run on-device or in the cloud, depending on the functionality, and some give you both choices.
+    \item \textbf{Cloud Functions} - Extend your app with custom backend code without needing to manage and scale your own servers. Functions can be triggered by events, which are emitted by Firebase products, Google Cloud services, or third parties, using webhook
+    \item \textbf{Authentication} - Manage your users in a simple and secure way. Firebase Auth offers multiple methods to authenticate, including email and password, third-party providers like Google or Facebook, and using your existing account system directly. Build your own interface, or take advantage of our open source, fully customizable UI.
+    \item \textbf{Hosting} - Simplify your web hosting with tools made specifically for modern web apps. When you upload your web assets, we automatically push them out to our global CDN and give them a free SSL certificate so your users get a secure, reliable, low-latency experience, no matter where they are.
+    \item \textbf{Cloud Storage} - Store and share user-generated content like images, audio, and video with powerful, simple, and cost-effective object storage built for Google scale. The Firebase SDKs for Cloud Storage add Google security to file uploads and downloads for your Firebase apps, regardless of network quality.
+    \item \textbf{Realtime Database} - Realtime Database is Firebase's original database. It's an efficient, low-latency solution for mobile apps that require synced states across clients in realtime. We recommend Cloud Firestore instead of Realtime Database for most developers starting a new project.
+\end{itemize}
+
+\newpage
+\subsubsection{Improve app quality}
+Firebase gives you insights into app performance and stability, so you can channel your resources effectively.
+These products weren't used in the project, but are worth mentioning as they are quite valuable in a commercial development environment where app performance and crashing have a huge impact on user
+\subsubsection{Grow your business}
+aaa
+\begin{center}
+    \includegraphics[width=12cm,height=12cm,keepaspectratio]{Images/firebasetradpic.png}
+\end{center}
+
+
+\subsubsection{Advantages}
+\begin{itemize}
+    \item \textbf{Shift from Java to Kotlin} - Kotlin
+    \item \textbf{Hard to find experienced developers} - asdas
+    \item \textbf{Limited learning resources} - Although
+\end{itemize}
+\subsubsection{Disadvantages}
+\begin{itemize}
+    \item \textbf{Shift from Java to Kotlin} - Kotlin
+    \item \textbf{Hard to find experienced developers} - asdas
+    \item \textbf{Limited learning resources} - Although
+\end{itemize}
 \subsection{Picasso}
 \par
 \medskip
 \begin{center}
     \includegraphics[width=10cm,height=10cm,keepaspectratio]{Images/picasso.png}
 \end{center}
+
+blah..
+
+
+\subsubsection{Advantages}
+\begin{itemize}
+    \item \textbf{Shift from Java to Kotlin} - Kotlin
+    \item \textbf{Hard to find experienced developers} - asdas
+    \item \textbf{Limited learning resources} - Although
+\end{itemize}
+\subsubsection{Disadvantages}
+\begin{itemize}
+    \item \textbf{Shift from Java to Kotlin} - Kotlin
+    \item \textbf{Hard to find experienced developers} - asdas
+    \item \textbf{Limited learning resources} - Although
+\end{itemize}
 
 \subsection{Native Applications}
 \par
@@ -89,6 +251,22 @@ Kotlin has many advantages, many are quite serious improvements in readability a
     \includegraphics[width=12cm,height=12cm,keepaspectratio]{Images/nativeapp2.png}
 \end{center}
 
+blah..
+
+
+\subsubsection{Advantages}
+\begin{itemize}
+    \item \textbf{Shift from Java to Kotlin} - Kotlin
+    \item \textbf{Hard to find experienced developers} - asdas
+    \item \textbf{Limited learning resources} - Although
+\end{itemize}
+\subsubsection{Disadvantages}
+\begin{itemize}
+    \item \textbf{Shift from Java to Kotlin} - Kotlin
+    \item \textbf{Hard to find experienced developers} - asdas
+    \item \textbf{Limited learning resources} - Although
+\end{itemize}
+
 \subsection{Hybrid Applications}
 \par
 \medskip
@@ -96,12 +274,44 @@ Kotlin has many advantages, many are quite serious improvements in readability a
     \includegraphics[width=12cm,height=12cm,keepaspectratio]{Images/hybridapp.png}
 \end{center}
 
+blah..
+
+
+\subsubsection{Advantages}
+\begin{itemize}
+    \item \textbf{Shift from Java to Kotlin} - Kotlin
+    \item \textbf{Hard to find experienced developers} - asdas
+    \item \textbf{Limited learning resources} - Although
+\end{itemize}
+\subsubsection{Disadvantages}
+\begin{itemize}
+    \item \textbf{Shift from Java to Kotlin} - Kotlin
+    \item \textbf{Hard to find experienced developers} - asdas
+    \item \textbf{Limited learning resources} - Although
+\end{itemize}
+
 \subsection{Hybrid vs Native Applications}
 \par
 \medskip
 \begin{center}
     \includegraphics[width=12cm,height=12cm,keepaspectratio]{Images/hybridvnative.png}
 \end{center}
+
+blah..
+
+
+\subsubsection{Advantages}
+\begin{itemize}
+    \item \textbf{Shift from Java to Kotlin} - Kotlin
+    \item \textbf{Hard to find experienced developers} - asdas
+    \item \textbf{Limited learning resources} - Although
+\end{itemize}
+\subsubsection{Disadvantages}
+\begin{itemize}
+    \item \textbf{Shift from Java to Kotlin} - Kotlin
+    \item \textbf{Hard to find experienced developers} - asdas
+    \item \textbf{Limited learning resources} - Although
+\end{itemize}
 
 \begin{figure}[h!]
 	\caption{Hybrid Application}

@@ -5,21 +5,26 @@
 %                      *** Latex template for dissertations ***
 %----------------------------------------------------------------------------------------
 
-\documentclass{book}
+\documentclass[openany]{report}
 
 \usepackage{graphicx} % Required for the inclusion of images
 \usepackage[numbers]{natbib} % Required to change bibliography style to APA
 \usepackage{amsmath} % Required for some math elements 
 \usepackage{makecell}
 \usepackage{eurosym}
+\usepackage{tabularx}
 \usepackage{hyperref}
+\usepackage[backend=biber]{biblatex}
 \usepackage{tabularx}
 \usepackage{pbox}
 \usepackage{listings}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
 \usepackage{color}
 \usepackage{eurosym}
+\usepackage[super]{nth}
 \setlength\parindent{0pt} % Removes all indentation from paragraphs
-
+\addbibresource{references.bib}
 \newcommand*{\customTitle}{\begingroup % Create the command for including the title page in the document
 \centering % Center all text
 \vspace*{\baselineskip} % White space at the top of the page
@@ -30,7 +35,7 @@
 %----------------------------------------------------------------------------------------
 %	1) Change Dissertation Title
 %----------------------------------------------------------------------------------------
-{\Large CHANGE THIS TO THE TITLE OF YOUR PROJECT \\[2ex] AND CHECK THE SPACING}\\[0.2\baselineskip] % Title
+{\Large E-Commerce Mobile Application   \\[2ex]}\\[0.2\baselineskip] % Title
 %----------------------------------------------------------------------------------------
 
 
@@ -71,10 +76,10 @@
 \pagenumbering{gobble}
 \begin{figure}
 \begin{center}
-\includegraphics[width=8cm,height=3.3cm,keepaspectratio]{Images/gmit-logo.jpg} % Include the image placeholder.png
+\includegraphics[width=8cm,height=3.3cm,keepaspectratio]{Images/gmit-logo.jpg}
 \end{center}
 \end{figure}
-\customTitle % This command includes the title page
+\customTitle
 \tableofcontents
 \listoffigures
 \pagenumbering{arabic} 
@@ -94,7 +99,19 @@
 \include{conclusion}
 
 %----------------------------------------------------------------------------------------
-\bibliographystyle{unsrt}
-\bibliography{references.bib}
-
+%   5) REFERENCES
+%      create ref in references.bib and \cite here
+%----------------------------------------------------------------------------------------
+\printbibliography[title={References}]
+\cite{firebase_products}
+\cite{firebase}
+\cite{salesforce_native_hyrbid}
+\cite{react_native_ex10}
+\cite{react_native_ex20}
+\cite{android_perf_tips}
+\cite{firebase_docs}
+\cite{firebase_docs_auth}
+\cite{firebase_docs_realtimedb}
+\cite{firebase_docs_storage}
+\cite{phone_market_share}
 \end{document}
