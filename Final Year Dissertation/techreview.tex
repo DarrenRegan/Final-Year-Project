@@ -20,7 +20,9 @@ Topics:
 
 \section{Main Technologies}
 This section will discuss the main technologies currently in use in the android application.
-
+%----------------------------------------------------------------------------------------
+% KOTLIN
+%----------------------------------------------------------------------------------------
 \subsection{Kotlin}
 \par
 \medskip
@@ -172,6 +174,10 @@ blah..
 \end{itemize}
 
 \newpage
+
+%----------------------------------------------------------------------------------------
+% FIREBASE
+%----------------------------------------------------------------------------------------
 \subsection{Firebase}
 \par
 \medskip
@@ -181,7 +187,12 @@ blah..
 
 Firebase is Google's mobile and web application development platform that helps you build, improve, and grow your application. Firebase frees developers to focus on crafting excellent user experiences. You don't need to manage servers. You don't need to write APIs. Firebase is your server, your API and your database, everything is written generically so that you can modify everything to suit most needs. Firebase has a huge amount of features, real time databases, cloud storage, hosting, machine learning, authentication, statistics, analytics and more.\newline
 
-Firebase products are setup in three different area's. Build better apps, Improve app quality \& Grow your business
+Firebase products are setup in three different area's.
+\begin{enumerate}
+  \item \textbf{Build better apps}
+  \item \textbf{Improve app quality}
+  \item \textbf{Grow your business}
+\end{enumerate}
 
 \subsubsection{Build better apps} Firebase lets you build more powerful, secure and scalable apps, using world-class infrastructure. There are seven different products focused on building a better app. My project takes advantage of Authenication, Realtime Database and Cloud storage. Almost all of Firebase products are extremely useful and are worth mentioning as they could be implemented into the project at some point.
 I will first summarize the products, and then go into further detail on the specific products i used in my project. How the code is implemented, why i used it etc.
@@ -201,49 +212,215 @@ I will first summarize the products, and then go into further detail on the spec
 \newpage
 \subsubsection{Improve app quality}
 Firebase gives you insights into app performance and stability, so you can channel your resources effectively.
-These products weren't used in the project, but are worth mentioning as they are quite valuable in a commercial development environment where app performance and crashing have a huge impact on user
+These products weren't used in the project, but are worth mentioning as they are quite valuable in a commercial development environment where app performance and crashing have a huge impact on user engagement and app performance on the Google Play Store.
+
+\subsubsection{Products for improving app quality}
+\begin{itemize}
+    \item \textbf{Crashlytics} - Reduce your troubleshooting time by turning an avalanche of crashes into a manageable list of issues. Get clear, actionable insight into which issues to tackle first by seeing the user impact right in the Crashlytics dashboard. Realtime alerts will help you stay on top of stability even on the go. Crashlytics is the primary crash reporter for Firebase.
+    \item \textbf{Performance Monitoring} - Diagnose app performance issues occurring on your users’ devices. Use traces to monitor the performance of specific parts of your app and see a summarized view in the Firebase console. Stay on top of your app’s start-up time and monitor HTTP requests without writing any code.
+    \item \textbf{Test Lab} - Run automatic and customized tests for your app on virtual and physical devices hosted by Google. Use Firebase Test Lab throughout your development lifecycle to discover bugs and inconsistencies so that you can offer up a great experience on a wide variety of devices.
+    \item \textbf{App Distribution} - Firebase App Distribution allows developers to send pre-release versions of their app to trusted testers from the console or using command line tools, as well as manage testers in one place.
+\end{itemize}
+
+
+\newpage
 \subsubsection{Grow your business}
-aaa
+Firebase helps you grow to millions of users, simplifying user engagement and retention.
+
+\subsubsection{Products for Growing your business}
+\begin{itemize}
+    \item \textbf{In-App Messaging} - Engage and nurture your active users with targeted and contextual messages that encourage them to complete meaningful actions within your app. You have the power to trigger messages based on user behavior and interests. You can also customize the design of in-app messages to fit your brand. In-App Messaging supports a variety of use cases and formats.
+    \item \textbf{Google Analytics} - Analyze user attributions and behavior in a single dashboard to make informed decisions on your product roadmap. Gain realtime insights from reports, or export your raw event data to Google BigQuery for custom analysis.
+    \item \textbf{Predictions} - Harness the power of Google’s machine learning to get insight into which segments of users are likely to churn or spend (or complete another conversion event). Use these smart predictive segments for targeting in other products like Remote Config, Cloud Messaging, and In-App Messaging.
+    \item \textbf{A/B Testing} - Improve your app by running product and marketing experiments, without worrying about setting up the infrastructure to run A/B tests. Customize experiments to suit your goals. Test a variety of updates to your app, like message copy or new features. Then, only roll-out changes proven to move the needle on your key metrics.
+    \item \textbf{Cloud Messaging} - Send messages and notifications to users across platforms—Android, iOS, and the web—for free. Messages can be sent to single devices, groups of devices, or specific topics or user segments. Firebase Cloud Messaging (FCM) scales to even the largest apps, delivering hundreds of billions of messages per day.
+    \item \textbf{Remote Config} - Customize how your app renders for each user. Change the look and feel, roll out features gradually, run A/B tests, deliver customized content to certain users, or make other updates without deploying a new version—all from the Firebase console. Monitor the impact of your changes and make adjustments in a matter of minutes.
+    \item \textbf{Dynamic Links} - Use Dynamic Links to deliver a customized user experience for iOS, Android, and the web. You can use them to power mobile web to drive native app conversions, user to user sharing, social and marketing campaigns, and more. Dynamic Links provides you with the attributions you need to better understand your mobile growth.
+    
+    
+\end{itemize}
+
+
+
+\subsubsection{Traditional Architecture vs. Serverless Architecture}
 \begin{center}
-    \includegraphics[width=12cm,height=12cm,keepaspectratio]{Images/firebasetradpic.png}
+    \includegraphics[width=10cm,height=10cm,keepaspectratio]{Images/firebasetradpic.png}
 \end{center}
 
+Firebase and other serverless architectures have rapidly emerged as a new technology concept in recent years. Using this Architecture, developers can create a variety of applications for various industries. Many enterprises have already started adopting serverless products, serverless architecture provides computation-light, highly-flexible, stateless applications and more. Developers are constantly on the lookout for more effective ways to maintain the software development lifecycle, doing so introduces new technologies that are accompanied with an increase in productivity. \newline
+Serverless architecture was introduced to help businesses focus on application development. With serverless, businesses no longer have to worry about server infrastructure, reducing development costs and shortening the development cycle.\newline
 
-\subsubsection{Advantages}
+A traditional architecture approach is frequently a large computer or cluster of computers that is accessed over the internet to provide access to information or servers. The machines are commonly located at specific area's around the world depending the size of the company. A traditional approach requires a team to manage these servers that which starts to become a problem what different scales of companies. As you get towards Enterprise sized servers they can become increasingly expensive. Not only do they cost Hundreds of Thousands to millions, you need to have space to house them, a staff of engineers to maintain them. In addition, the average life cycle of a given server is about 5 years. Which means not only do you have to potentially replace your machines, but in the interim you are constrained by the limitations of that machine.\newline
+An example of these would be if a websites server does not have the capacity to handle it's increased load, the only traditional solution is to purchase more servers to handle extra volume, or replacing existing servers with a better model. Both have exceptionally high cost and come with large downsides.\newline
+\newpage
+
+Serverless Architectures aims to solve these problems. Rather than having one machine to host a job, you can now utilize servers, such as Firebase, Amazon AWS and other cloud hosted databases. All have a huge array of additional features that you opt into to spec out a server that fits your needs and removes the additional costs and headaches of a traditional server.
+
+\begin{figure}[h!]
+	\caption{Serverless Evolution}
+	\label{image:myImageName}
+	\centering
+	\includegraphics[width=0.8\textwidth]{Images/serverless_evolution.png}
+\end{figure}
+
+
+
+
+\subsubsection{Advantages of Serverless}
+Advantages Serverless architectures has are the following:
+\begin{enumerate}
+  \item Providers scale and manages the required resources
+  \item Rapid provision of resources in real-time, even for unforeseen peak loads and disproportionate growth
+  \item Highly scalable and flexible architecture
+  \item Users only need to pay for the resources they use
+  \item High error tolerance thanks to flexible hardware infrastructure in the provider’s computer centers
+\end{enumerate}
+
+\subsubsection{Disadvantages of Serverless}
+Disadvantages Serverless architectures has are the following:
+\begin{enumerate}
+  \item No access to virtual machines, operating system or runtime environments
+  \item Implementing serverless structures is very labor-intensive
+  \item Lock-in effect – for example, when changing provider, you generally have to recode all event-based functions
+  \item Relatively complex monitoring and debugging process, as in-depth performance, and error analyses are generally not possible
+\end{enumerate}
+\newpage
+
+As shown Firebase is an excellent option for any developer interested in creating a mobile application, finally i will go over the Pros and Cons of choosing Firebase
+
+\subsubsection{The Pros of Firebase}
 \begin{itemize}
-    \item \textbf{Shift from Java to Kotlin} - Kotlin
-    \item \textbf{Hard to find experienced developers} - asdas
-    \item \textbf{Limited learning resources} - Although
+    \item \textbf{Databases} - Depending on your budget, Google offers robust databases to use with your apps. Both realtime and Firestore databases can be scaled in terms of size, suggesting a fully secure managed solution, that still provides you easy access to your data via firebase console. Data updates and offline access makes databases usable for real time application, as well as keeping multiple databases in sync
+    \item \textbf{Wide selection of products} - Firebase suggest a lot of products to make your application work. You can choose between realtime databases and firestore, store data in the cloud and build serverless applications with the integrated Cloud functions.
+    \item \textbf{Free to use for small developers} - Firebase pricing\cite{firebase_pricing} is free as you start with it. This will allow you to understand whether it fits your application and understand all the peculiarities. Once you reach certain amount of database memory or need a specific product, you can choose a different plan around that product or memory you need. You can do this by using the Blaze plan calculator provided on firebase pricing website\cite{firebase_pricing}
+    \item \textbf{Excellent Documentation} - The whole firebase platform is extremely well documented. Good technical documentation, API documentation, SDK references, which makes all the products easier to use and accessible for the user. The firebase products page contains all the required information concerning the integration's, available platforms, guidance's, docs, guides and lists supported technologies.
+    \item \textbf{Accessible UI and ease of Integration} - Firebase requires minimal programming language knowledge, and suggests integration's via its user interface, it also is integrated into Android Studio which further increases ease of use. While eliminating the need for complex configurations, anyone can set up the application.
+    \item \textbf{Google products} - Firebase comes with a Content Delivery Network (CDN) in-built with Google Cloud platform, while also having integration with all google products. A product owned by google also has the advantage of unlikely hood of the company collapsing or not supporting the product frequently.
+    
 \end{itemize}
-\subsubsection{Disadvantages}
+
+\newpage
+\subsubsection{The Cons of Firebase}
+The cons of firebase are limited and depends on the scope of you project and the size of your company. Some of the cons are currently being fixed through new features that are currently in Beta. For example Firebase Realtime Database, which i used in this project has limitations of not being able to do complex query's and Data Modeling. Google aims to fix this with its new product Firestore. 
 \begin{itemize}
-    \item \textbf{Shift from Java to Kotlin} - Kotlin
-    \item \textbf{Hard to find experienced developers} - asdas
-    \item \textbf{Limited learning resources} - Although
+    \item \textbf{Firebase Realtime Database limitations} - Realtime Database is used as the main storage for my project, which has cons. One of the mains problems with it, is the limited querying capabilities. Realtime database provides no way to filter capabilities, because the whole Database is a huge JSON file, which makes it pretty difficult to make complex queries.
+    \item \textbf{Data Modeling} - Firebase Realtime Database and it data modeling as a problem where because of "Database as a single JSON file" structure,m you can't implement relations between data items.
+    \item \textbf{Locked into a vendor} - This is a wide problem with BaaS solutions in general, not having the ability to migrate data to another platform can be considered a con.
+     \item \textbf{Support for iOS} - While firebase is a cross-platform product, it concentrates more on Android mobile platform being that its a google product. Android Studio easily integrates all Firebase products such as Test Lab, Auth etc. While iOS devices are lacking behind on such integration's.
 \end{itemize}
+\newpage
+
+%----------------------------------------------------------------------------------------
+% PICASSO IMAGE HANDLING
+%----------------------------------------------------------------------------------------
 \subsection{Picasso}
 \par
 \medskip
 \begin{center}
     \includegraphics[width=10cm,height=10cm,keepaspectratio]{Images/picasso.png}
 \end{center}
+Picasso is a powerful image downloading and caching library, it is widely used and requires very little code to implement.
+This is used because working with images in android is difficult, you need to work with network requests, caching, background threads and decoding \& encoding of image which uses a lot of memory. Picasso hides all this and adds additional features like resizing images while being memory efficient.\newline
 
-blah..
+Images add much-needed context and visual flair to Android applications. Picasso allows for hassle-free image loading in your application—often in one line of code!
+
+\begin{lstlisting}
+Picasso.get().load("http://i.imgur.com/DvpvklR.png").into(imageView);
+\end{lstlisting}
 
 
-\subsubsection{Advantages}
+Many common pitfalls of image loading on Android are handled automatically by Picasso:
 \begin{itemize}
-    \item \textbf{Shift from Java to Kotlin} - Kotlin
-    \item \textbf{Hard to find experienced developers} - asdas
-    \item \textbf{Limited learning resources} - Although
-\end{itemize}
-\subsubsection{Disadvantages}
-\begin{itemize}
-    \item \textbf{Shift from Java to Kotlin} - Kotlin
-    \item \textbf{Hard to find experienced developers} - asdas
-    \item \textbf{Limited learning resources} - Although
+    \item Handling ImageView recycling and download cancelation in an adapter.
+    \item Complex image transformations with minimal memory use.
+    \item Automatic memory and disk caching.
 \end{itemize}
 
+\begin{center}
+    \includegraphics[width=10cm,height=10cm,keepaspectratio]{Images/picassoex1.png}
+\end{center}
+\newpage
+
+\subsubsection{Features}
+
+\textbf{ADAPTER DOWNLOADS}\newline
+
+Adapter re-use is automatically detected and the previous download canceled.
+\begin{lstlisting}
+@Override public void getView(int position, View convertView, ViewGroup parent) {
+  SquaredImageView view = (SquaredImageView) convertView;
+  if (view == null) {
+    view = new SquaredImageView(context);
+  }
+  String url = getItem(position);
+
+  Picasso.get().load(url).into(view);
+}
+\end{lstlisting}
+
+
+\textbf{IMAGE TRANSFORMATIONS}\newline
+
+Transform images to better fit into layouts and to reduce memory size.
+\begin{lstlisting}
+Picasso.get()
+  .load(url)
+  .resize(50, 50)
+  .centerCrop()
+  .into(imageView)
+\end{lstlisting}
+\textbf{Can also specify custom transformations for more advanced effects.}
+\begin{lstlisting}
+public class CropSquareTransformation implements Transformation {
+  @Override public Bitmap transform(Bitmap source) {
+    int size = Math.min(source.getWidth(), source.getHeight());
+    int x = (source.getWidth() - size) / 2;
+    int y = (source.getHeight() - size) / 2;
+    Bitmap result = Bitmap.createBitmap(source, x, y, size, size);
+    if (result != source) {
+      source.recycle();
+    }
+    return result;
+  }
+
+  @Override public String key() { return "square()"; }
+}
+\end{lstlisting}
+Pass an instance of this class to the transform method.
+\newpage
+
+\textbf{PLACE HOLDERS}\newline
+
+Picasso supports both download and error placeholders as optional features.
+\begin{lstlisting}
+Picasso.get()
+    .load(url)
+    .placeholder(R.drawable.user_placeholder)
+    .error(R.drawable.user_placeholder_error)
+    .into(imageView);
+\end{lstlisting}
+A request will be retried three times before the error placeholder is shown.\newline
+
+\textbf{RESOURCE LOADING}\newline
+
+Resources, assets, files, content providers are all supported as image sources.
+\begin{lstlisting}
+Picasso.get().load(R.drawable.landing_screen).into(imageView1);
+Picasso.get().load("file:///android_asset/DvpvklR.png").into(imageView2);
+Picasso.get().load(new File(...)).into(imageView3);
+\end{lstlisting}
+
+\textbf{DEBUG INDICATORS}\newline
+
+For development you can enable the display of a colored ribbon which indicates the image source. Call setIndicatorsEnabled(true) on the Picasso instance.
+\begin{center}
+    \includegraphics[width=12cm,height=12 cm,keepaspectratio]{Images/picassodebug.png}
+\end{center}
+\newpage
+
+%----------------------------------------------------------------------------------------
+% NATIVE APPLICATIONS
+%----------------------------------------------------------------------------------------
 \subsection{Native Applications}
 \par
 \medskip
