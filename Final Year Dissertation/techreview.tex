@@ -331,7 +331,7 @@ Picasso.get().load("http://i.imgur.com/DvpvklR.png").into(imageView);
 
 Many common pitfalls of image loading on Android are handled automatically by Picasso:
 \begin{itemize}
-    \item Handling ImageView recycling and download cancelation in an adapter.
+    \item Handling ImageView recycling and download cancellation in an adapter.
     \item Complex image transformations with minimal memory use.
     \item Automatic memory and disk caching.
 \end{itemize}
@@ -344,7 +344,6 @@ Many common pitfalls of image loading on Android are handled automatically by Pi
 \subsubsection{Features}
 
 \textbf{ADAPTER DOWNLOADS}\newline
-
 Adapter re-use is automatically detected and the previous download canceled.
 \begin{lstlisting}
 @Override public void getView(int position, View convertView, ViewGroup parent) {
