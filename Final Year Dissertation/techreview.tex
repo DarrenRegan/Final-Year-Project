@@ -432,38 +432,63 @@ blah..
 
 \subsubsection{Advantages}
 \begin{itemize}
-    \item \textbf{Shift from Java to Kotlin} - Kotlin
-    \item \textbf{Hard to find experienced developers} - asdas
-    \item \textbf{Limited learning resources} - Although
+    \item \textbf{Performance} - Native apps deliver the best performance of all development approaches. This is a major reason why platforms like Instagram and Airbnb \cite{react_native_ex10} \cite{react_native_ex20} moved from react native to native android development. Performance is one of the most important components of keeping a user on your application, the actions of your application need to be snappy and can't leave the user feeling like they need to wait.
+    \item \textbf{Better Support} - Native apps receive complete support from app stores and the overall app marketplace. Distribution in app stores helps with discover-ability. Overtime Google has made Native development a more favoured development standard, along with the pressure of consumers waiting a extremely high standard from mobile applications. Having better support a company such as Apple or Google is a strong advantage over hybrid development.
+    \item \textbf{Better Overall} - Native apps are interactive, intuitive, and run more smoothly in terms of user input and output. As mentioned native apps are just smoother for large applications.
+    \item \textbf{Native Integration Features} - Native development allows developers to access the full feature set of the selected operating system. Not only do you have the full feature set from the selected operating system, you also have a the full feature set of tools like Android Studio.
+    \item \textbf{Flow of app} - The user experience of native apps is far superior to web apps or hybrid apps. To the user, the flow is more natural because of each mobile operating system’s specific UI guidelines and standards.
+    \item \textbf{Goggle App Store Quality} - A native app must be approved by its respective operating system which assures quality, security, and device compatibility. While all Apps on the Google App Store aren't all at the highest standard, Google has an aggressive stance on the expected quality of applications and will quickly remove a developers access to the store if they are seen to be having a negative on the store as a whole.
 \end{itemize}
 \subsubsection{Disadvantages}
 \begin{itemize}
-    \item \textbf{Shift from Java to Kotlin} - Kotlin
-    \item \textbf{Hard to find experienced developers} - asdas
-    \item \textbf{Limited learning resources} - Although
+    \item \textbf{Higher Difficulty} - Native apps use difficult programming languages which require experienced developers.
+    \item \textbf{Higher Cost} - Expenses are more costly upfront for native apps compared to web or hybrid apps.
+    \item \textbf{Not the best option for Simple apps} - Native apps are not the best option for simple applications.
+    \item \textbf{Hiring Experienced Developers} - Hiring experienced native developers can be more difficult and costly compared to a hybrid developer.
 \end{itemize}
-
+\newpage
 \subsection{Hybrid Applications}
 \par
 \medskip
 \begin{center}
-    \includegraphics[width=12cm,height=12cm,keepaspectratio]{Images/hybridapp.png}
+    \includegraphics[width=10cm,height=10cm,keepaspectratio]{Images/hybridapp.png}
 \end{center}
 
-blah..
+\subsubsection{What is a Hybrid App?}
+Hybrid apps are a blend, hence the name hybrid, of both native and web solutions. Where the core of the application is written using web technologies.\newline
+
+The core of an hybrid application is written using web technologies (HTML, CSS and JavaScript), which are then encapsulated within a native application. Through the use of plugins, these applications can have full access to the mobile device’s features.\cite{ionic_hybid_app}\newline
+
+The heart of a hybrid-mobile application is still just an application that is written with HTML, CSS, and JavaScript. However, instead of the app being shown within the user’s browser, it is run from within a native application and its own embedded browser, which is essentially invisible to the user. For example, an iOS application would use the WKWebView to display our application, while on Android it would use the WebView element to do the same function.\cite{ionic_hybid_app}\newline
+
+This code is then embedded into a native application wrapper using a solution like \hyperlink{https://cordova.apache.org/docs/en/latest/guide/overview/}{Apache Cordova} and creates a native shell application that is just the platform’s webview component in which it will load your web application. This gives you the ability to create and publish true native applications that can be submitted to each of the platform’s app stores for sale.
+
+\begin{figure}[h!]
+	\caption{Architecture of a Hybrid App (Cordova) \cite{cordova_hybid_app}}
+	\label{image:myImageName}
+	\centering
+	\includegraphics[width=1\textwidth]{Images/cordovaapparchitecture.png}
+\end{figure}	
+
+\newpage
+\subsubsection{When to use Hybrid Applications}
+Hybrid mobile applications have their place in situations where fast development is the main priority or when the high cost of targeting each separate platform with an individual native application would prohibit the creation of the application. Large companies who are in an extremely competitive app market are not going to sacrifice performance and control with hybrid development. However smaller developers have the option of taking advantage of the gap between native and hybrid development in terms of the most cost effective options and when it comes to cost hybrid development is very cost effective for a lot of companies.
 
 
 \subsubsection{Advantages}
 \begin{itemize}
-    \item \textbf{Shift from Java to Kotlin} - Kotlin
-    \item \textbf{Hard to find experienced developers} - asdas
-    \item \textbf{Limited learning resources} - Although
+    \item \textbf{Unified Development} - By far the single biggest benefit that hybrid mobile apps can offer is the unified development. Companies can save a substantial amount of money that would otherwise have to be spent on developing and maintaining separate code bases for different mobile platforms. They can develop just a single version and let their hybrid framework of choice do the heavy lifting and ensure that everything will work flawlessly.
+    This, of course, directly leads to lower cost of development and, potentially, greater revenue. Many small businesses wouldn’t be able to afford to target all major mobile platforms, if there wasn’t the option to do so with a hybrid framework.
+    \item \textbf{Fast Deployment} - The Minimum Viable Product (MVP) approach necessitates the fast deployment of functional solutions in order to be the first to penetrate the market and gain a substantial competitive advantage. Those who need to have their app in the App Store as fast as possible should seriously consider using hybrid applications.\cite{mvp_paper}
+    \item \textbf{Scaling} - Hybrid applications are limited only by the underlying framework. Companies who partner with a good provider can instantly target all major platforms without any additional effort at all. It the platform is popular enough, it can be expected that it will quickly add support for any new mobile operating systems and their respective incremental updates.
+    \item \textbf{Return on Investment} - Hybrid applications built with software such as Ionic have, 1. 60-80\% time savings on average building with hybrid versus native. 2. Less hiring costs. 3. Project is more feasible with lower costs. \cite{ionic_hybrid_roi}
 \end{itemize}
+
 \subsubsection{Disadvantages}
 \begin{itemize}
-    \item \textbf{Shift from Java to Kotlin} - Kotlin
-    \item \textbf{Hard to find experienced developers} - asdas
-    \item \textbf{Limited learning resources} - Although
+    \item \textbf{App Performance} - Hybrid apps add an extra layer between the source code and the target mobile platform: the particular hybrid mobile framework, such as Ionic, Cordova, Xamarin, React Native, and many others. The unsurprising result is a possible loss of performance. It really varies from application to application just how noticeable the difference can be, but the fact that Facebook migrated their mobile application from HTML5 to native shows that there really can be a significant difference, at least for large-scale applications. Mark Zuckerberg even went on to say that “The biggest mistake we've made as a company is betting on HTML5 over native.”
+    \item \textbf{Debugging} - That extra layer also makes debugging a potential nightmare. Developers have to rely on the framework itself to play nicely with the targeted operating system and not introduce any new bugs. Since developers are not likely to have a deep knowledge of the targeted platform, figuring out the exact cause of an issue can be a lengthy affair.
+    \item \textbf{Lack native features} - Hybrid apps lack the integration with native operating systems that limit to app at certain points, once your app reaches a certain point of complexity Hybrid apps start to struggle.
 \end{itemize}
 
 \subsection{Hybrid vs Native Applications}
@@ -488,10 +513,3 @@ blah..
     \item \textbf{Hard to find experienced developers} - asdas
     \item \textbf{Limited learning resources} - Although
 \end{itemize}
-
-\begin{figure}[h!]
-	\caption{Hybrid Application}
-	\label{image:myImageName}
-	\centering
-	\includegraphics[width=1\textwidth]{Images/hybrid_dev_img.PNG}
-\end{figure}
