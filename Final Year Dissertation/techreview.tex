@@ -149,30 +149,36 @@ data class Person(val name: String,
 val john = Person("John", "john@gmail.com", 112)
 }
 \end{lstlisting}
-
-\subsection{Kotlin vs Java}
+%----------------------------------------------------------------------------------------
+% KOTLIN VS. JAVA
+%----------------------------------------------------------------------------------------
+\subsection{Kotlin vs. Java in Context of Android Development}
 \par
 \medskip
 \begin{center}
-    \includegraphics[width=12cm,height=12cm,keepaspectratio]{Images/KotlinvJava.jpg}
+    \includegraphics[width=10cm,height=10cm,keepaspectratio]{Images/KotlinvJava.jpg}
 \end{center}
 
-blah..
+\subsection{Why would a Java Developer switch to Kotlin?}
+Android development has always been tagged with Java Development. But Kotlin has outpaced it in performance, simplicity, maintainability, robustness, and lightweight code. Developers and users lure for feature-rich, effective and cost-efficient mobile apps that help increase the efficiency of processes, increasing competencies, meet customers’ expectations, help maintain business’ reputation and remove uncertainty. This is why Google has made Kotlin as the preferred language for Android app developers.\newline
 
+Although Kotlin seems to work back to back with Java for front-end development, it is already being utilized in backend projects like Spring 5. It can compile to almost every platform including Android, JVM, Native and JavaScript and can extract one common code-base that will target all of them at the same time. Its scripting capabilities make it easy to handle all Gradle build scripts. Its built-in null safety support makes it win over Android that is full of old Java-style API’s. Being compatible with all Java libraries and frameworks, the JVM, Gradle integration and Maven build systems, it allows Android developers to write new modules and write them alongside existing Java code. Plus it supports modern programming concepts like higher-order functions, extension functions, delegates which help build clean API’s.
+\newpage
 
-\subsubsection{Advantages}
+\subsection{Why Java isn't preferred for Android Development}
 \begin{itemize}
-    \item \textbf{Shift from Java to Kotlin} - Kotlin
-    \item \textbf{Hard to find experienced developers} - asdas
-    \item \textbf{Limited learning resources} - Although
-\end{itemize}
-\subsubsection{Disadvantages}
-\begin{itemize}
-    \item \textbf{Shift from Java to Kotlin} - Kotlin
-    \item \textbf{Hard to find experienced developers} - asdas
-    \item \textbf{Limited learning resources} - Although
+    \item \textbf{Support a subset of Java 8 Features} - Android Developers are not able to reap the full benefits of Java. To make full use of Java you must use Java 7. \cite{android_sup_java}
+    \item \textbf{Issues addressed in Kotlin} - Java comes with some well-documented language issues like endless try-catch blocks, null-unsafety, NullPointerExceptions and lack of extendability that are addressed with kotlin.
+    \item \textbf{Syntax of Java} - Syntax of Java is very complex and writing longer code leans to more errors, bugs and is much harder to read.
 \end{itemize}
 
+\subsection{Switch from Java to Kotlin}
+\begin{itemize}
+    \item \textbf{Kotlin and Java can co-exist} - Kotlin is simultaneously operable with Java. You can have both Java and Kotlin code co-exist within a single project. Both codes can compile perfectly and users are not even able to make out which part of the code is Kotlin and which part is Java.
+    \item \textbf{Kotlin and Java classes can be written simultaneously} - There is no requirement to convert the entire project to Kotlin or starting a new project. Alternatively, small chunks of codes can be written in Kotlin and can be inserted as and when required, without affecting the entire code.
+    \item \textbf{Kotlin is an enhancement of Java} - a java developer or an existing java application user will be easily able to comprehend what Kotlin code is doing. It looks familiar, the code is easy to read and understand.
+   \item \textbf{Android Studio support for Kotlin} - Android studio has an excellent support for Kotlin. After you install Kotlin plugin, Android Studio makes it easy to configure Kotlin plugin in your project. Once this is done, the IDE will automatically understand the underlying functionality like Kotlin code compilation, and execution. Debugging, code navigation, unit testing, auto-completion and full refactoring support. Once all of this is set, converting an entire Java code into Kotlin can be accomplished in a single click.
+\end{itemize}
 \newpage
 
 %----------------------------------------------------------------------------------------
@@ -493,26 +499,27 @@ Hybrid mobile applications have their place in situations where fast development
     \item \textbf{Debugging} - That extra layer also makes debugging a potential nightmare. Developers have to rely on the framework itself to play nicely with the targeted operating system and not introduce any new bugs. Since developers are not likely to have a deep knowledge of the targeted platform, figuring out the exact cause of an issue can be a lengthy affair.
     \item \textbf{Lack native features} - Hybrid apps lack the integration with native operating systems that limit to app at certain points, once your app reaches a certain point of complexity Hybrid apps start to struggle.
 \end{itemize}
-
-\subsection{Hybrid vs Native Applications}
-\par
-\medskip
-\begin{center}
-    \includegraphics[width=12cm,height=12cm,keepaspectratio]{Images/hybridvnative.png}
-\end{center}
-
-blah..
-
-
-\subsubsection{Advantages}
-\begin{itemize}
-    \item \textbf{Shift from Java to Kotlin} - Kotlin
-    \item \textbf{Hard to find experienced developers} - asdas
-    \item \textbf{Limited learning resources} - Although
-\end{itemize}
-\subsubsection{Disadvantages}
-\begin{itemize}
-    \item \textbf{Shift from Java to Kotlin} - Kotlin
-    \item \textbf{Hard to find experienced developers} - asdas
-    \item \textbf{Limited learning resources} - Although
-\end{itemize}
+%
+%\subsection{Hybrid vs Native Applications}
+%\par
+%\medskip
+%\begin{center}
+%    \includegraphics[width=12cm,height=12cm,keepaspectratio]{Images/hybridvnative.png}
+%\end{center}%
+%
+%blah..%
+%
+%
+%\subsubsection{Advantages}
+%\begin{itemize}
+%    \item \textbf{Shift from Java to Kotlin} - Kotlin
+%%    \item \textbf{Hard to find experienced developers} - asdas
+%    \item \textbf{Limited learning resources} - Although
+%\end{itemize}
+%\subsubsection{Disadvantages}
+%\begin{itemize}
+%    \item \textbf{Shift from Java to Kotlin} - Kotlin
+%    \item \textbf{Hard to find experienced developers} - asdas
+%    \item \textbf{Limited learning resources} - Although
+%\end{itemize}
+%
