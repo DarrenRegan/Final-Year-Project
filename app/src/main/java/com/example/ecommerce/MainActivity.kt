@@ -104,7 +104,7 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
     } //onCreate end
 
-    //Remember Me Allowing Access
+    //Remember Me Allowing Access - https://github.com/pilgr/Paper
     private fun AllowAccess(phone: String, password: String) {
         val RootRef: DatabaseReference
         RootRef = FirebaseDatabase.getInstance().getReference()

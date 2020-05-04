@@ -67,6 +67,7 @@ Add additional notes about how to deploy this on a live system
 * [Kotlin](https://kotlinlang.org/)
 * [Firebase](https://square.github.io/picasso/)
 * [Picasso](https://firebase.google.com/)
+* [Paper](https://github.com/pilgr/Paper)
 
 ## Author
 
@@ -84,10 +85,11 @@ This project is licensed under the GNU General Public License - see the [LICENSE
 
 **Learning Material**
 
+Please refer to Dissertation - Downloadable at top of README for a full list of references
+
 * https://developer.android.com/kotlin/learn
 * https://codelabs.developers.google.com/codelabs/build-your-first-android-app-kotlin/#0
 * http://rey5137.com/material/
-* [onCClickListener with Intent](https://www.youtube.com/watch?v=ukh3zOLNhmY)
 * [Validation for Database](https://firebaseopensource.com/projects/rosariopfernandes/firextensions/tutorials/realtime-database.md/)
 
 **React Native vs Kotlin Article/Blogs**
