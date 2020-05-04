@@ -6,4 +6,9 @@ class Prevalent {
 
     private lateinit var currentOnlineUser:Users
 
+    companion object{
+        var UserPhoneKey:String = "UserPhone"
+        var UserPasswordKey:String = "UserPassword"
+    }
+
 }

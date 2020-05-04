@@ -5,12 +5,15 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.widget.CheckBox
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.ecommerce.Prevalent.Prevalent
 import com.example.ecommerce.Model.Users
 import com.firebase.ui.auth.data.model.User
 import com.google.firebase.database.*
+import io.paperdb.Paper
 
 @Suppress("DEPRECATION")
 class LoginActivity : AppCompatActivity() {
@@ -19,6 +22,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var InputPhoneNumber: EditText
     private lateinit var LoginButton: Button
     private lateinit var loadingBar: ProgressDialog
+    private lateinit var checkBoxRememberMe: CheckBox
     private val parentDbName = "Users"
 
 
@@ -31,6 +35,8 @@ class LoginActivity : AppCompatActivity() {
         InputPassword = findViewById(R.id.login_password_input)
         loadingBar = ProgressDialog(this)
 
+        checkBoxRememberMe = findViewById(R.id.remember_me_chk)
+        Paper.init(this)
 
 
         LoginButton.setOnClickListener{
@@ -60,6 +66,11 @@ class LoginActivity : AppCompatActivity() {
 
     private fun AllowAccessToAccount(phone: String, password: String) {
 
+        if (checkBoxRememberMe.isChecked){
+            Paper.book().write(Prevalent.UserPhoneKey, phone)
+            Paper.book().write(Prevalent.UserPasswordKey, password)
+        }
+
         val RootRef: DatabaseReference
         RootRef = FirebaseDatabase.getInstance().getReference()
 
@@ -78,6 +89,10 @@ class LoginActivity : AppCompatActivity() {
                             //Sends user to HomeActivity
                             val intent = Intent(this@LoginActivity, HomeActivity::class.java)
                             startActivity(intent)
+                        }
+                        else{
+                            Toast.makeText(this@LoginActivity, "Password is Incorrect...", Toast.LENGTH_SHORT).show()
+                            loadingBar.dismiss()
                         }
                     }//getPhone if
 
