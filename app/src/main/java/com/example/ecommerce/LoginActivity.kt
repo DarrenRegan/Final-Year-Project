@@ -5,10 +5,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.widget.CheckBox
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.view.View
+import android.widget.*
 import com.example.ecommerce.Prevalent.Prevalent
 import com.example.ecommerce.Model.Users
 import com.firebase.ui.auth.data.model.User
@@ -23,7 +21,9 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var LoginButton: Button
     private lateinit var loadingBar: ProgressDialog
     private lateinit var checkBoxRememberMe: CheckBox
-    private val parentDbName = "Users"
+    private lateinit var AdminLink: TextView
+    private lateinit var UserLink: TextView
+    private var parentDbName = "Users"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +33,8 @@ class LoginActivity : AppCompatActivity() {
         LoginButton = findViewById(R.id.login_btn)
         InputPhoneNumber = findViewById(R.id.login_phone_number_input)
         InputPassword = findViewById(R.id.login_password_input)
+        AdminLink = findViewById(R.id.admin_panel_link)
+        UserLink = findViewById(R.id.not_admin_panel_link)
         loadingBar = ProgressDialog(this)
 
         checkBoxRememberMe = findViewById(R.id.remember_me_chk)
@@ -42,6 +44,22 @@ class LoginActivity : AppCompatActivity() {
         LoginButton.setOnClickListener{
             LoginUser()
         }
+
+        AdminLink.setOnClickListener{
+            LoginButton.setText("Login Admin")
+            AdminLink.setVisibility(View.INVISIBLE)
+            UserLink.setVisibility(View.VISIBLE)
+            parentDbName = "Admins"
+        }
+
+        UserLink.setOnClickListener{
+            LoginButton.setText("Login")
+            AdminLink.setVisibility(View.VISIBLE)
+            UserLink.setVisibility(View.INVISIBLE)
+            parentDbName = "Users"
+        }
+
+
     }//onCreate
 
     private fun LoginUser() {
