@@ -102,11 +102,21 @@ class LoginActivity : AppCompatActivity() {
 
                     if (usersData?.getPhone().equals(phone)){
                         if (usersData?.getPassword().equals(password)){
-                            Toast.makeText(this@LoginActivity, "Login Successful", Toast.LENGTH_SHORT).show()
-                            loadingBar.dismiss()
-                            //Sends user to HomeActivity
-                            val intent = Intent(this@LoginActivity, HomeActivity::class.java)
-                            startActivity(intent)
+                            if(parentDbName.equals("Admins")){
+                                Toast.makeText(this@LoginActivity, "Admin Login Successful", Toast.LENGTH_SHORT).show()
+                                loadingBar.dismiss()
+                                //Sends user to AdminActivity
+                                val intent = Intent(this@LoginActivity, AdminActivity::class.java)
+                                startActivity(intent)
+                            }
+                            else if(parentDbName.equals("Users")){
+                                Toast.makeText(this@LoginActivity, "Login Successful", Toast.LENGTH_SHORT).show()
+                                loadingBar.dismiss()
+                                //Sends user to HomeActivity
+                                val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+                                startActivity(intent)
+                            }
+
                         }
                         else{
                             Toast.makeText(this@LoginActivity, "Password is Incorrect...", Toast.LENGTH_SHORT).show()
