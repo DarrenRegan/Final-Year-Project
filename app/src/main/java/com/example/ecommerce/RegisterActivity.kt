@@ -100,7 +100,7 @@ class RegisterActivity : AppCompatActivity() {
                         })//addOnCompleteListener
                 }//Data
                 else{
-                    Toast.makeText(this@RegisterActivity, "This " + phone + "already exists.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@RegisterActivity, "This " + phone + " already exists.", Toast.LENGTH_SHORT).show()
                     loadingBar.dismiss()
                     Toast.makeText(this@RegisterActivity, "Please try another number", Toast.LENGTH_SHORT).show()
 
