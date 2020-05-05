@@ -106,7 +106,7 @@ class LoginActivity : AppCompatActivity() {
                                 Toast.makeText(this@LoginActivity, "Admin Login Successful", Toast.LENGTH_SHORT).show()
                                 loadingBar.dismiss()
                                 //Sends user to AdminActivity
-                                val intent = Intent(this@LoginActivity, AdminActivity::class.java)
+                                val intent = Intent(this@LoginActivity, AdminPanelActivity::class.java)
                                 startActivity(intent)
                             }
                             else if(parentDbName.equals("Users")){

@@ -28,6 +28,24 @@ class AdminPanelActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_panel)
 
+        //Layout 1 Initialize Views
+        mensShirts =  findViewById(R.id.mens_shirts)
+        womansShirts = findViewById(R.id.womans_shirts)
+        boysClothes = findViewById(R.id.boys_clothes)
+        girlsClothes = findViewById(R.id.girls_clothes)
+
+        //Layout 2 Initialize Views
+        womansShoes = findViewById(R.id.womans_shoes)
+        mensShoes = findViewById(R.id.mens_shoes)
+        bedroomFurniture = findViewById(R.id.bedroom)
+        furniture = findViewById(R.id.furniture)
+
+        //Layout 3 Initialize Views
+        tablets = findViewById(R.id.tablets)
+        phones = findViewById(R.id.phones)
+        books = findViewById(R.id.books)
+        gaming = findViewById(R.id.gaming)
+
         //*******************************************************************
         //Layout 1 OnClickListeners - mensShirts, womansShirts, boysClothes, girlsClothes
         //*******************************************************************
