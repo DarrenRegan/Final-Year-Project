@@ -22,6 +22,7 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.HashMap
 
 class AdminActivity : AppCompatActivity() {
 
@@ -32,6 +33,7 @@ class AdminActivity : AppCompatActivity() {
     private lateinit var saveCurrentDate:String
     private lateinit var saveCurrentTime:String
     private lateinit var productKey:String
+    private lateinit var downloadImageUrl:String
     private lateinit var InputProductImage:ImageView
     private lateinit var InputProductName:EditText
     private lateinit var InputProductDesc:EditText
@@ -112,18 +114,30 @@ class AdminActivity : AppCompatActivity() {
                     throw it
                 }
             }
-            filePath.downloadUrl
+            downloadImageUrl = filePath.downloadUrl.toString()
+            return@continueWithTask filePath.downloadUrl
         }.addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val downloadUri = task.result
                 Toast.makeText(this@AdminActivity, "Product Image Uploaded ", Toast.LENGTH_SHORT).show()
 
-                //saveToDatabase()
+                saveToDatabase()
             } else {
                 // Handle failures
                 // ...
             }
         }
+    }
+
+    private fun saveToDatabase() {
+        var pMap:HashMap<String, Any> = HashMap()
+        pMap.put("pid", productKey)
+        pMap.put("date", saveCurrentDate)
+        pMap.put("time", saveCurrentTime)
+        pMap.put("description", Desc)
+        pMap.put("image", downloadImageUrl)
+        pMap.put("pid", productKey)
+        pMap.put("pid", productKey)
     }
 
     private fun openProducts() {
