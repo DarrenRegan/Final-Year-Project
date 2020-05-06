@@ -81,10 +81,7 @@ class AdminActivity : AppCompatActivity() {
         Price = InputProductPrice.getText().toString()
         Prod_Name = InputProductName.getText().toString()
 
-        if(ImageUri == null){
-            Toast.makeText(this, "Must add a product image!", Toast.LENGTH_SHORT).show()
-        }
-        else if(TextUtils.isEmpty(Desc)){
+        if(TextUtils.isEmpty(Desc)){
             Toast.makeText(this, "Please write a Product Desc ", Toast.LENGTH_SHORT).show()
         }
         else if(TextUtils.isEmpty(Price)){
@@ -129,7 +126,7 @@ class AdminActivity : AppCompatActivity() {
             return@continueWithTask filePath.downloadUrl
         }.addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                val downloadUri = task.result
+                downloadImageUrl = task.result.toString()
                 Toast.makeText(this@AdminActivity, "Product Image Uploaded ", Toast.LENGTH_SHORT).show()
                 saveToDatabase()
             } else {
@@ -158,6 +155,10 @@ class AdminActivity : AppCompatActivity() {
 
         ProductRef.child(productKey).updateChildren(pMap).addOnCompleteListener{ task ->
             if (task.isSuccessful) {
+                //Sends user to Admin Panel
+                val intent = Intent(this@AdminActivity, AdminPanelActivity::class.java)
+                startActivity(intent)
+
                 loadingBar.dismiss()
                 Toast.makeText(this@AdminActivity, "Product Added Successfully ", Toast.LENGTH_SHORT).show()
             }
