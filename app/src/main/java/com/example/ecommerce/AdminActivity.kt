@@ -112,7 +112,7 @@ class AdminActivity : AppCompatActivity() {
         //Create a Random key
         productKey = saveCurrentDate + saveCurrentTime
 
-        //Store Img in Firebase
+        //Store Img in Firebase - https://firebase.google.com/docs/storage/android/upload-files#get_a_download_url
         var filePath = ProductImageRef.child(ImageUri.lastPathSegment + productKey + ".jpg")
         val ut = filePath.putFile(ImageUri)
 
