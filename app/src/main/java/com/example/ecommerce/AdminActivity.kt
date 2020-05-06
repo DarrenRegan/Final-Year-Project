@@ -1,6 +1,7 @@
 package com.example.ecommerce
 
 import android.app.Activity
+import android.app.ProgressDialog
 import android.content.Intent
 import android.media.Image
 import android.net.Uri
@@ -16,6 +17,7 @@ import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.Task
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
@@ -24,6 +26,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.HashMap
 
+@Suppress("DEPRECATION")
 class AdminActivity : AppCompatActivity() {
 
     private lateinit var CategoryName:String
@@ -42,7 +45,8 @@ class AdminActivity : AppCompatActivity() {
     private var ProductPick = 1
     private lateinit var ImageUri:Uri
     private lateinit var ProductImageRef:StorageReference
-
+    private lateinit var ProductRef:DatabaseReference
+    private lateinit var loadingBar: ProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +54,7 @@ class AdminActivity : AppCompatActivity() {
 
         CategoryName = getIntent().getExtras()?.get("category").toString()
         ProductImageRef = FirebaseStorage.getInstance().reference.child("Product Images")
+        ProductRef = FirebaseDatabase.getInstance().reference.child("Products")
 
         //Initialize Views
         InputProductImage = findViewById(R.id.select_product)
@@ -57,6 +62,7 @@ class AdminActivity : AppCompatActivity() {
         InputProductDesc =  findViewById(R.id.product_desc)
         InputProductPrice = findViewById(R.id.product_price)
         AddProductButton =  findViewById(R.id.add_new_product)
+        loadingBar = ProgressDialog(this)
 
         //OnClickListeners
         InputProductImage.setOnClickListener{
@@ -93,6 +99,11 @@ class AdminActivity : AppCompatActivity() {
     }
 
     private fun storeProductInfo() {
+        loadingBar.setTitle("Adding a Product.. ")
+        loadingBar.setMessage("Please wait, while we add the product.. ")
+        loadingBar.setCanceledOnTouchOutside(false)
+        loadingBar.show()
+
         var c = Calendar.getInstance()
 
         var currentDate = SimpleDateFormat("MMM dd, yyyy")
@@ -120,12 +131,17 @@ class AdminActivity : AppCompatActivity() {
             if (task.isSuccessful) {
                 val downloadUri = task.result
                 Toast.makeText(this@AdminActivity, "Product Image Uploaded ", Toast.LENGTH_SHORT).show()
-
                 saveToDatabase()
             } else {
-                // Handle failures
-                // ...
+                loadingBar.dismiss()
+                var ex = task.exception.toString()
+                Toast.makeText(this@AdminActivity, "Error: $ex", Toast.LENGTH_SHORT).show()
+
             }
+        }.addOnFailureListener {task ->
+            var ex = task.cause.toString()
+            Toast.makeText(this@AdminActivity, "Error: $ex", Toast.LENGTH_SHORT).show()
+            loadingBar.dismiss()
         }
     }
 
@@ -136,8 +152,22 @@ class AdminActivity : AppCompatActivity() {
         pMap.put("time", saveCurrentTime)
         pMap.put("description", Desc)
         pMap.put("image", downloadImageUrl)
-        pMap.put("pid", productKey)
-        pMap.put("pid", productKey)
+        pMap.put("category", CategoryName)
+        pMap.put("price", Price)
+        pMap.put("pname", Prod_Name)
+
+        ProductRef.child(productKey).updateChildren(pMap).addOnCompleteListener{ task ->
+            if (task.isSuccessful) {
+                loadingBar.dismiss()
+                Toast.makeText(this@AdminActivity, "Product Added Successfully ", Toast.LENGTH_SHORT).show()
+            }
+            else{
+                loadingBar.dismiss()
+                var ex = task.exception.toString()
+                Toast.makeText(this@AdminActivity, "Error: $ex", Toast.LENGTH_SHORT).show()
+
+            }
+        }
     }
 
     private fun openProducts() {
