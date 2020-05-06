@@ -36,12 +36,12 @@ class RegisterActivity : AppCompatActivity() {
         loadingBar = ProgressDialog(this)
 
         CreateAccountButton.setOnClickListener{
-            CreateAccount()
+            createAccount()
         }
 
     }
 
-    private fun CreateAccount() {
+    private fun createAccount() {
         var name = InputName.text.toString()
         var phone = InputPhoneNumber.text.toString()
         var password = InputPassword.text.toString()

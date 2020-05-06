@@ -42,7 +42,7 @@ class LoginActivity : AppCompatActivity() {
 
 
         LoginButton.setOnClickListener{
-            LoginUser()
+            loginUser()
         }
 
         AdminLink.setOnClickListener{
@@ -62,7 +62,7 @@ class LoginActivity : AppCompatActivity() {
 
     }//onCreate
 
-    private fun LoginUser() {
+    private fun loginUser() {
         var phone = InputPhoneNumber.text.toString()
         var password = InputPassword.text.toString()
 
@@ -78,11 +78,11 @@ class LoginActivity : AppCompatActivity() {
             loadingBar.setCanceledOnTouchOutside(false)
             loadingBar.show()
             
-            AllowAccessToAccount(phone, password)
+            allowAccessToAccount(phone, password)
         }
     }//LoginUser
 
-    private fun AllowAccessToAccount(phone: String, password: String) {
+    private fun allowAccessToAccount(phone: String, password: String) {
 
         if (checkBoxRememberMe.isChecked){
             Paper.book().write(Prevalent.UserPhoneKey, phone)

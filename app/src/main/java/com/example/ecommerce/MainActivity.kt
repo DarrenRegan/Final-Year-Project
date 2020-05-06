@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
 
         if(userPhone != "" && userPass != ""){
             if(!TextUtils.isEmpty(userPhone) && !TextUtils.isEmpty(userPass)){
-                AllowAccess(userPhone, userPass)
+                allowAccess(userPhone, userPass)
                 loadingBar.setTitle("Already Logged In!")
                 loadingBar.setMessage("Please wait... ")
                 loadingBar.setCanceledOnTouchOutside(false)
@@ -105,7 +105,7 @@ class MainActivity : AppCompatActivity() {
     } //onCreate end
 
     //Remember Me Allowing Access - https://github.com/pilgr/Paper
-    private fun AllowAccess(phone: String, password: String) {
+    private fun allowAccess(phone: String, password: String) {
         val RootRef: DatabaseReference
         RootRef = FirebaseDatabase.getInstance().getReference()
 
