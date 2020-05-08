@@ -16,14 +16,18 @@ import androidx.appcompat.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
+import com.example.ecommerce.Prevalent.Prevalent
 import com.example.ecommerce.ui.gallery.GalleryFragment
 import com.example.ecommerce.ui.home.HomeFragment
 import com.example.ecommerce.ui.share.ShareFragment
 import com.example.ecommerce.ui.slideshow.SlideshowFragment
 import com.example.ecommerce.ui.tools.ToolsFragment
+import de.hdodenhof.circleimageview.CircleImageView
 import io.paperdb.Paper
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.nav_header_main.view.*
 
 class HomeActivity : AppCompatActivity() {
 
@@ -56,19 +60,12 @@ class HomeActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        var headerView = navView.getHeaderView(0)
+        var userNameTextView:TextView = headerView.findViewById(R.id.user_profile_name)
+        var profileImageView:CircleImageView = headerView.findViewById(R.id.user_profile_image)
 
-/*        navView.setNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.nav_send -> {//LOGOUT
-                    Paper.book().destroy()
-                    val intent = Intent(this, LoginActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    finish()
-                    startActivity(intent)
-                }
-            }//when
-            false
-        }*/
+        userNameTextView.text = Prevalent.currentOnlineUser.getName()
+
 
     }//onCreate
 
@@ -85,3 +82,16 @@ class HomeActivity : AppCompatActivity() {
     }
 
 }
+
+/*        navView.setNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_send -> {//LOGOUT
+                    Paper.book().destroy()
+                    val intent = Intent(this, LoginActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    finish()
+                    startActivity(intent)
+                }
+            }//when
+            false
+        }*/

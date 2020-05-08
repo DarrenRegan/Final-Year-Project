@@ -4,9 +4,8 @@ import com.example.ecommerce.Model.Users
 
 class Prevalent {
 
-    private lateinit var currentOnlineUser:Users
-
     companion object{
+        lateinit var currentOnlineUser:Users
         var UserPhoneKey:String = "UserPhone"
         var UserPasswordKey:String = "UserPassword"
     }

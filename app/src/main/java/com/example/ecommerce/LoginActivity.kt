@@ -114,6 +114,7 @@ class LoginActivity : AppCompatActivity() {
                                 loadingBar.dismiss()
                                 //Sends user to HomeActivity
                                 val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+                                Prevalent.currentOnlineUser = usersData!!
                                 startActivity(intent)
                             }
 
