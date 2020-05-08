@@ -42,6 +42,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:19.2.1'
     implementation 'com.google.firebase:firebase-storage:19.1.1'
     implementation 'com.android.support:multidex:1.0.3'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
     //implementation 'com.google.firebase:firebase-database:16.0.4'
     //implementation 'com.google.firebase:firebase-core:16.0.4'
     //implementation 'com.google.firebase:firebase-analytics:17.2.2'
@@ -50,6 +51,7 @@ dependencies {
     // Kotlin
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
     // Testing Fragments in Isolation
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
     implementation 'io.paperdb:paperdb:2.6'
     implementation 'com.google.firebase:firebase-auth:19.2.0'
