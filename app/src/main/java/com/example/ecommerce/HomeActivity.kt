@@ -1,7 +1,7 @@
 package com.example.ecommerce
 
-import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import androidx.navigation.findNavController
@@ -14,29 +14,39 @@ import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
-import android.view.MenuItem
-import android.widget.Button
+import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.ecommerce.Model.Products
+import com.example.ecommerce.Model.Products.Companion.description
+import com.example.ecommerce.Model.Products.Companion.image
+import com.example.ecommerce.Model.Products.Companion.pname
+import com.example.ecommerce.Model.Products.Companion.price
 import com.example.ecommerce.Prevalent.Prevalent
-import com.example.ecommerce.ui.gallery.GalleryFragment
-import com.example.ecommerce.ui.home.HomeFragment
-import com.example.ecommerce.ui.share.ShareFragment
-import com.example.ecommerce.ui.slideshow.SlideshowFragment
-import com.example.ecommerce.ui.tools.ToolsFragment
+import com.example.ecommerce.views.ProductView
+import com.firebase.ui.database.FirebaseRecyclerAdapter
+import com.firebase.ui.database.FirebaseRecyclerOptions
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 import io.paperdb.Paper
-import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.nav_header_main.view.*
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var productsRef:DatabaseReference
+    private lateinit var recyclerView:RecyclerView
+    lateinit var layoutManager:RecyclerView.LayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        productsRef = FirebaseDatabase.getInstance().reference.child("Products")
         Paper.init(this)
+
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         toolbar.setTitle("Home")
         setSupportActionBar(toolbar)
@@ -66,7 +76,10 @@ class HomeActivity : AppCompatActivity() {
 
         userNameTextView.text = Prevalent.currentOnlineUser.getName()
 
-
+        recyclerView = findViewById(R.id.recycler_menu)
+        recyclerView.setHasFixedSize(true)
+        layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = layoutManager
     }//onCreate
 
 
@@ -81,7 +94,29 @@ class HomeActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-}
+    override fun onStart() {
+        super.onStart()
+
+        var options = FirebaseRecyclerOptions.Builder<Products>().setQuery(productsRef, Products::class.java).build()
+
+        var adapter:FirebaseRecyclerAdapter<Products, ProductView> = object:FirebaseRecyclerAdapter<Products, ProductView>(options) {
+            override fun onBindViewHolder(holder: ProductView, position: Int, model: Products) {
+                holder.txtProdName.text = pname
+                holder.txtProdDesc.text = description
+                holder.txtProdPrice.text = "Price: ${price}$"
+                Picasso.get().load(image).into(holder.txtImageView)
+            }
+
+            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductView {
+                var view = LayoutInflater.from(parent.context).inflate(R.layout.products_layout, parent, false)
+                return ProductView(view)
+            }
+        }//adapter
+        recyclerView.adapter = adapter
+        adapter.startListening()
+    }//onStart
+
+} //HomeActivity
 
 /*        navView.setNavigationItemSelectedListener { item ->
             when (item.itemId) {

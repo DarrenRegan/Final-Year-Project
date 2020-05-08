@@ -123,6 +123,7 @@ class MainActivity : AppCompatActivity() {
                             loadingBar.dismiss()
                             //Sends user to HomeActivity
                             val intent = Intent(this@MainActivity, HomeActivity::class.java)
+                            Prevalent.currentOnlineUser = usersData!!
                             startActivity(intent)
                         }
                         else{
