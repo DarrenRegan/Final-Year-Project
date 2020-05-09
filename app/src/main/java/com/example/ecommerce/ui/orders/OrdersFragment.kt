@@ -1,4 +1,4 @@
-package com.example.ecommerce.ui.tools
+package com.example.ecommerce.ui.orders
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.ecommerce.R
 
-class ToolsFragment : Fragment() {
+class OrdersFragment : Fragment() {
 
-    private lateinit var toolsViewModel: ToolsViewModel
+    private lateinit var ordersViewModel: OrdersViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        toolsViewModel =
-            ViewModelProviders.of(this).get(ToolsViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_tools, container, false)
-        val textView: TextView = root.findViewById(R.id.text_tools)
-        toolsViewModel.text.observe(this, Observer {
+        ordersViewModel =
+            ViewModelProviders.of(this).get(OrdersViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_orders, container, false)
+        val textView: TextView = root.findViewById(R.id.text_slideshow)
+        ordersViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root

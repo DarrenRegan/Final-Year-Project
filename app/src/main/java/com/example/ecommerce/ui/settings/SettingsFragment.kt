@@ -1,4 +1,4 @@
-package com.example.ecommerce.ui.share
+package com.example.ecommerce.ui.settings
 
 import android.content.Intent
 import android.net.Uri
@@ -26,15 +26,14 @@ import android.app.ProgressDialog
 import android.text.TextUtils
 import android.widget.Toast
 import com.example.ecommerce.HomeActivity
-import com.example.ecommerce.MainActivity
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.UploadTask
 
 
 @Suppress("DEPRECATION")
-class ShareFragment : Fragment() {
+class SettingsFragment : Fragment() {
 
-    private lateinit var shareViewModel: ShareViewModel
+    private lateinit var settingsViewModel: SettingsViewModel
     private lateinit var recyclerView:RecyclerView
     private lateinit var profileImageView:CircleImageView
     private lateinit var fullNameEditText:EditText
@@ -55,9 +54,9 @@ class ShareFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        shareViewModel =
-            ViewModelProviders.of(this).get(ShareViewModel::class.java)
-        val root = inflater.inflate(com.example.ecommerce.R.layout.fragment_share, container, false)
+        settingsViewModel =
+            ViewModelProviders.of(this).get(SettingsViewModel::class.java)
+        val root = inflater.inflate(com.example.ecommerce.R.layout.fragment_settings, container, false)
         val textView: TextView = root.findViewById(com.example.ecommerce.R.id.text_share)
         storageProfilePicRef = FirebaseStorage.getInstance().reference.child("Profile pictures")
         profileImageView = root.findViewById(com.example.ecommerce.R.id.settings_profile_img)
@@ -67,7 +66,7 @@ class ShareFragment : Fragment() {
         profileChangeTxtBtn = root.findViewById(com.example.ecommerce.R.id.profile_img_change_btn)
         saveTextBtn = root.findViewById(com.example.ecommerce.R.id.update_acc_settings)
         closeTextBtn = root.findViewById(com.example.ecommerce.R.id.close_settings)
-        shareViewModel.text.observe(viewLifecycleOwner, Observer {
+        settingsViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
 

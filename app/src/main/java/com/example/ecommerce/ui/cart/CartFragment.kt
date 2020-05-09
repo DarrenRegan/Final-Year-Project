@@ -1,4 +1,4 @@
-package com.example.ecommerce.ui.slideshow
+package com.example.ecommerce.ui.cart
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.ecommerce.R
 
-class SlideshowFragment : Fragment() {
+class CartFragment : Fragment() {
 
-    private lateinit var slideshowViewModel: SlideshowViewModel
+    private lateinit var cartViewModel: CartViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        slideshowViewModel =
-            ViewModelProviders.of(this).get(SlideshowViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_slideshow, container, false)
-        val textView: TextView = root.findViewById(R.id.text_slideshow)
-        slideshowViewModel.text.observe(this, Observer {
+        cartViewModel =
+            ViewModelProviders.of(this).get(CartViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_cart, container, false)
+        val textView: TextView = root.findViewById(R.id.text_gallery)
+        cartViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root

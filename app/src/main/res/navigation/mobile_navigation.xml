@@ -13,27 +13,27 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.example.ecommerce.ui.gallery.GalleryFragment"
+        android:name="com.example.ecommerce.ui.cart.CartFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_cart" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.example.ecommerce.ui.slideshow.SlideshowFragment"
+        android:name="com.example.ecommerce.ui.orders.OrdersFragment"
         android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_orders" />
 
     <fragment
         android:id="@+id/nav_tools"
-        android:name="com.example.ecommerce.ui.tools.ToolsFragment"
+        android:name="com.example.ecommerce.ui.categories.CategoriesFragment"
         android:label="@string/menu_tools"
         tools:layout="@layout/fragment_tools" />
 
     <fragment
         android:id="@+id/nav_share"
-        android:name="com.example.ecommerce.ui.share.ShareFragment"
+        android:name="com.example.ecommerce.ui.settings.SettingsFragment"
         android:label="@string/menu_share"
-        tools:layout="@layout/fragment_share" >
+        tools:layout="@layout/fragment_settings" >
         <action
             android:id="@+id/action_nav_share_self"
             app:destination="@id/nav_share" />
@@ -45,7 +45,7 @@
 
     <fragment
         android:id="@+id/nav_send"
-        android:name="com.example.ecommerce.ui.send.SendFragment"
+        android:name="com.example.ecommerce.ui.logout.LogoutFragment"
         android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
+        tools:layout="@layout/fragment_logout" />
 </navigation>

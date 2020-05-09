@@ -1,10 +1,10 @@
-package com.example.ecommerce.ui.share
+package com.example.ecommerce.ui.cart
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class ShareViewModel : ViewModel() {
+class CartViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = ""

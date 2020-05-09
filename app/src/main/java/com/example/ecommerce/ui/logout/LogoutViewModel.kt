@@ -1,17 +1,10 @@
-package com.example.ecommerce.ui.send
+package com.example.ecommerce.ui.logout
 
-import android.content.Intent
-import android.widget.Button
-import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.ecommerce.LoginActivity
-import com.example.ecommerce.R
-import io.paperdb.Paper
 
-class SendViewModel : ViewModel() {
+class LogoutViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = " "
