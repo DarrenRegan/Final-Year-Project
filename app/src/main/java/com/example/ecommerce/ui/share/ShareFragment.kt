@@ -5,15 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.RecyclerView
 import com.example.ecommerce.R
+import kotlinx.android.synthetic.main.content_home.*
 
 class ShareFragment : Fragment() {
 
     private lateinit var shareViewModel: ShareViewModel
-
+    private lateinit var recyclerView:RecyclerView
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -26,6 +30,11 @@ class ShareFragment : Fragment() {
         shareViewModel.text.observe(this, Observer {
             textView.text = it
         })
+
+
+        //recycler_menu.visibility = View.GONE
+
         return root
     }
+
 }

@@ -1,5 +1,6 @@
 package com.example.ecommerce
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -14,6 +15,7 @@ import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
+import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -77,6 +79,40 @@ class HomeActivity : AppCompatActivity() {
         recyclerView.setHasFixedSize(true)
         layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when {
+                destination.id == R.id.nav_share -> {
+                    toolbar.visibility = View.VISIBLE
+                    recyclerView.visibility = View.GONE
+                }
+                destination.id == R.id.nav_tools -> {
+                    toolbar.visibility = View.VISIBLE
+                    recyclerView.visibility = View.GONE
+                }
+                destination.id == R.id.nav_slideshow -> {
+                    toolbar.visibility = View.VISIBLE
+                    recyclerView.visibility = View.GONE
+                }
+                destination.id == R.id.nav_gallery -> {
+                    toolbar.visibility = View.VISIBLE
+                    recyclerView.visibility = View.GONE
+                }
+                destination.id == R.id.nav_send -> {
+                    toolbar.visibility = View.VISIBLE
+                    recyclerView.visibility = View.GONE
+                    
+                    Paper.book().destroy()
+                    val intent = Intent(this, LoginActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+                }
+                else -> {
+                    toolbar.visibility = View.VISIBLE
+                    recyclerView.visibility = View.VISIBLE
+                }
+            }
+        }
     }//onCreate
 
 
