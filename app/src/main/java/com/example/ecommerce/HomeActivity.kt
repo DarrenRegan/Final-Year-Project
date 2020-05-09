@@ -100,7 +100,7 @@ class HomeActivity : AppCompatActivity() {
             override fun onBindViewHolder(holder: ProductView, position: Int, model: Products) {
                 holder.txtProdName.setText(model.getPname())
                 holder.txtProdDesc.setText(model.getDescription())
-                holder.txtProdPrice.setText(model.getPrice())       //"Price: ${price}$"
+                holder.txtProdPrice.setText("Price: " + model.getPrice() + "$")       //"Price: ${price}$"
                 Picasso.get().load(model.getImage()).into(holder.txtImageView)
             }
 
