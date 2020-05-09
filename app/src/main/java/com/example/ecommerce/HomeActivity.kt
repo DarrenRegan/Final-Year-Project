@@ -19,10 +19,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ecommerce.Model.Products
-import com.example.ecommerce.Model.Products.Companion.description
-import com.example.ecommerce.Model.Products.Companion.image
-import com.example.ecommerce.Model.Products.Companion.pname
-import com.example.ecommerce.Model.Products.Companion.price
+
 import com.example.ecommerce.Prevalent.Prevalent
 import com.example.ecommerce.views.ProductView
 import com.firebase.ui.database.FirebaseRecyclerAdapter
@@ -97,18 +94,18 @@ class HomeActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        var options = FirebaseRecyclerOptions.Builder<Products>().setQuery(productsRef, Products::class.java).build()
+        val options = FirebaseRecyclerOptions.Builder<Products>().setQuery(productsRef, Products::class.java).build()
 
-        var adapter:FirebaseRecyclerAdapter<Products, ProductView> = object:FirebaseRecyclerAdapter<Products, ProductView>(options) {
+        val adapter:FirebaseRecyclerAdapter<Products, ProductView> = object:FirebaseRecyclerAdapter<Products, ProductView>(options) {
             override fun onBindViewHolder(holder: ProductView, position: Int, model: Products) {
-                holder.txtProdName.text = pname
-                holder.txtProdDesc.text = description
-                holder.txtProdPrice.text = "Price: ${price}$"
-                Picasso.get().load(image).into(holder.txtImageView)
+                holder.txtProdName.setText(model.getPname())
+                holder.txtProdDesc.setText(model.getDescription())
+                holder.txtProdPrice.setText(model.getPrice())       //"Price: ${price}$"
+                Picasso.get().load(model.getImage()).into(holder.txtImageView)
             }
 
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductView {
-                var view = LayoutInflater.from(parent.context).inflate(R.layout.products_layout, parent, false)
+                val view = LayoutInflater.from(parent.context).inflate(R.layout.products_layout, parent, false)
                 return ProductView(view)
             }
         }//adapter
