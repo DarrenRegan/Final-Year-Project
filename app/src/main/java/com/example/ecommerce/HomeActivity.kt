@@ -28,6 +28,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.StorageTask
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 import io.paperdb.Paper
@@ -74,6 +75,7 @@ class HomeActivity : AppCompatActivity() {
         var profileImageView:CircleImageView = headerView.findViewById(R.id.user_profile_image)
 
         userNameTextView.text = Prevalent.currentOnlineUser.getName()
+        Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile_img).into(profileImageView)
 
         recyclerView = findViewById(R.id.recycler_menu)
         recyclerView.setHasFixedSize(true)
@@ -136,7 +138,7 @@ class HomeActivity : AppCompatActivity() {
             override fun onBindViewHolder(holder: ProductView, position: Int, model: Products) {
                 holder.txtProdName.setText(model.getPname())
                 holder.txtProdDesc.setText(model.getDescription())
-                holder.txtProdPrice.setText("Price: " + model.getPrice() + "$")       //"Price: ${price}$"
+                holder.txtProdPrice.setText("Price: " + "€" + model.getPrice())       //"Price: ${price}$"
                 Picasso.get().load(model.getImage()).into(holder.txtImageView)
             }
 
