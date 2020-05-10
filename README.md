@@ -33,8 +33,6 @@ Build project
 
 ## Testing 
 
-Testing 
-
 Testing Devices used
 * Windows 10 Home & Pro edition - Laptop & Desktop
 * Android Studio Emulators - Targets SDKs from 21 - 29 - Tested primaryly on Pixel 2 API 29 (Android 10)
@@ -50,18 +48,6 @@ Admin Password: admin
 User UserID: 888
 User Password: 177
 ```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
