@@ -35,7 +35,7 @@ Build project
 
 Testing Devices used
 * Windows 10 Home & Pro edition - Laptop & Desktop
-* Android Studio Emulators - Targets SDKs from 21 - 29 - Tested primaryly on Pixel 2 API 29 (Android 10)
+* Android Studio Emulators - Targets SDKs from 21 - 29 - Tested primarily on Pixel 2 API 29 (Android 10)
 
 ### Accounts for Testing
 
