@@ -344,51 +344,710 @@ private fun LoginUser() {
         AllowAccessToAccount(phone, password)
     }
 }//LoginUser
+\end{minted}
+\begin{figure}[h!]
+	\caption{Login View - Activity\_login\.XML}
+	\label{image:myImageName}
+	\centering
+	\includegraphics[width=0.35\textwidth]{Images/login_view.png}
+	\includegraphics[width=0.35\textwidth]{Images/login_deisign.png}
+\end{figure}
+\newpage
+\subsubsection{Login Verification and Remember me}
+4. This is the last step for the user to Login. this method will called in the LoginUser method to verify that the details the user inputs are valid. If they're valid the user will be sent to the HomeAcivity page where they will see Products.
+\begin{minted}{kotlin}
+private fun allowAccessToAccount(phone: String, password: String) {
+
+if (checkBoxRememberMe.isChecked){
+    Paper.book().write(Prevalent.UserPhoneKey, phone)
+    Paper.book().write(Prevalent.UserPasswordKey, password)
+}
+val RootRef: DatabaseReference
+RootRef = FirebaseDatabase.getInstance().getReference()
+RootRef.addListenerForSingleValueEvent(object: ValueEventListener {
+
+    override fun onDataChange(dataSnapshot: DataSnapshot) {
+        //var userData:Users
+        if(dataSnapshot.child(parentDbName).child(phone).exists()){
+            var usersData = dataSnapshot.child(parentDbName).child(phone).getValue(Users::class.java)
+
+            if (usersData?.getPhone().equals(phone)){
+                if (usersData?.getPassword().equals(password)){
+                    if(parentDbName.equals("Admins")){
+                        Toast.makeText(this@LoginActivity, "Admin Login Successful", Toast.LENGTH_SHORT).show()
+                        loadingBar.dismiss()
+                        //Sends user to AdminActivity
+                        val intent = Intent(this@LoginActivity, AdminPanelActivity::class.java)
+                        startActivity(intent)
+                    }
+                    else if(parentDbName.equals("Users")){
+                        Toast.makeText(this@LoginActivity, "Login Successful", Toast.LENGTH_SHORT).show()
+                        loadingBar.dismiss()
+                        //Sends user to HomeActivity
+                        val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+                        Prevalent.currentOnlineUser = usersData!!
+                        startActivity(intent)
+                    }
+                }
+                else{
+                    Toast.makeText(this@LoginActivity, "Password is Incorrect...", Toast.LENGTH_SHORT).show()
+                    loadingBar.dismiss()
+                }
+            }//getPhone if
+        }
+        else{
+            Toast.makeText(this@LoginActivity, "Account with this " + phone + " Number does not exist", Toast.LENGTH_SHORT).show()
+       
+\end{minted}
+\newpage
+\subsection{Navigation}
+
+The Navigation for my project is created using the Navigation Drawer Activity in combination with Fragments
+
+\subsubsection{Setting up Drawer Resources}
+First you must create an drawer resource. Here i will show aciviity\_home\_drawer\.xml
+
+\begin{minted}{kotlin}
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Cart" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Orders" />
+        <item
+            android:id="@+id/nav_tools"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Categories" />
+    </group>
+
+    <item android:title="Settings">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Settings" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Logout" />
+        </menu>
+    </item>
+
+</menu>
+
+\end{minted}
+
+\subsubsection{Define Fragments}
+After this next is to define fragments that will be displayed within the Navigation Activity;.
+These fragments are created in the ui folder each with a View\-Model and a host Fragment.
+Once created we then need to create Mobile\_navigation\.xml which is used to navigation between each fragment.
+\begin{minted}{kotlin}
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.ecommerce.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.example.ecommerce.ui.cart.CartFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_cart" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.example.ecommerce.ui.orders.OrdersFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_orders" />
+
+    <fragment
+        android:id="@+id/nav_tools"
+        android:name="com.example.ecommerce.ui.categories.CategoriesFragment"
+        android:label="@string/menu_tools"
+        tools:layout="@layout/fragment_tools" />
+
+    <fragment
+        android:id="@+id/nav_share"
+        android:name="com.example.ecommerce.ui.settings.SettingsFragment"
+        android:label="@string/menu_share"
+        tools:layout="@layout/fragment_settings" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_send"
+        android:name="com.example.ecommerce.ui.logout.LogoutFragment"
+        android:label="@string/menu_send"
+        tools:layout="@layout/fragment_logout" />
+</navigation>
+\end{minted}
+
+\subsubsection{Navigation Host Fragment}
+Once we've create all the Fragments and connected them with the Navigation View we must choose a Nav Host Fragment. This is basically the highest level activity of the navigation view, anything created on this Activity will appear on other views when you change to other Fragments in the navigation. 
+
+\begin{minted}{kotlin}
+    <fragment
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/mobile_navigation" />
+\end{minted}
+
+
+\begin{figure}[h!]
+	\caption{Navigation View - Activity\_home\.XML}
+	\label{image:myImageName}
+	\includegraphics[width=0.5\textwidth]{Images/nav_activity_homexml.png}
+	\includegraphics[width=0.5\textwidth]{Images/nav_activity_home_view_xml.png}
+\end{figure}
+
+\subsubsection{Setup Navigation in Activity}
+Setting up the Navigation within the Activity does not take up much code in kotlin compared to Java.\newline
+
+\textbf{First i initialize all the needed Views and setup the navController}
+
+\begin{minted}{kotlin}
+val toolbar: Toolbar = findViewById(R.id.toolbar)
+setSupportActionBar(toolbar)
+val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+val navView: NavigationView = findViewById(R.id.nav_view)
+val navController = findNavController(R.id.nav_host_fragment)
+setupActionBarWithNavController(navController, appBarConfiguration)
+navView.setupWithNavController(navController)
+\end{minted}
+
+I will also attach a addOnDestinationChangedListener to the navController.
+
+\begin{minted}{kotlin}
+navController.addOnDestinationChangedListener { _, destination, _ ->
+            when {
+                destination.id == R.id.nav_share -> {
+                    toolbar.visibility = View.VISIBLE
+                    recyclerView.visibility = View.GONE
+                }
+                destination.id == R.id.nav_tools -> {
+                    toolbar.visibility = View.VISIBLE
+                    recyclerView.visibility = View.GONE
+                }
+                destination.id == R.id.nav_slideshow -> {
+                    toolbar.visibility = View.VISIBLE
+                    recyclerView.visibility = View.GONE
+                }
+                destination.id == R.id.nav_gallery -> {
+                    toolbar.visibility = View.VISIBLE
+                    recyclerView.visibility = View.GONE
+                }
+                destination.id == R.id.nav_send -> {
+                    toolbar.visibility = View.VISIBLE
+                    recyclerView.visibility = View.GONE
+                    
+                    Paper.book().destroy()
+                    val intent = Intent(this, LoginActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+                }
+                else -> {
+                    toolbar.visibility = View.VISIBLE
+                    recyclerView.visibility = View.VISIBLE
+                }
+\end{minted}
+After implementing all of these code snippets the Navigation Drawer is now fully connected and ready to have code implemented. The Navigation will display as shown in Figure \ref{image:myImageName}
+
+\subsection{Admin}
+
+The admin portion of my project is entered through the LoginActivity where the user must choose the admin login to reach the AdminPanelActivity.\newline
+
+The Admin feature consists of two different Activities, AdminActivity \& AdminPanelActivity
+
+\subsubsection{AdminPanelActivity}
+The AdminPanelActivity is the first View the user will see after logging in with an Admin Account. This Panel is used for the user to add products to the application store. The panel consists of Twelve different categories, each being a different category for the store (Men's clothes, Women's Clothes, furniture, phones etc.)
+
+\begin{figure}[h!]
+	\caption{Admin Panel View - Activity\_admin\_panel\.XML}
+	\label{image:myImageName}
+	\centering
+	\includegraphics[width=0.45\textwidth]{Images/admin_panel_view.png}
+	\includegraphics[width=0.45\textwidth]{Images/admin_panel_design.png}
+\end{figure}
+
+Each ImageView shown in Figure \ref{image:myImageName} as its on setOnClickListener which will pass on the Category and the value of the Categoryt to the AdminActivity when an imageview is chosen.
+
+\begin{minted}{kotlin}
+        //*******************************************************************
+        //Layout 3 OnClickListeners - tablets, phones, books, gaming
+        //*******************************************************************
+
+        tablets.setOnClickListener{
+            val intent = Intent(this, AdminActivity::class.java)
+            intent.putExtra("category", "Tablets")
+            startActivity(intent)
+        }
+        phones.setOnClickListener{
+            val intent = Intent(this, AdminActivity::class.java)
+            intent.putExtra("category", "Phones")
+            startActivity(intent)
+        }
+        books.setOnClickListener{
+            val intent = Intent(this, AdminActivity::class.java)
+            intent.putExtra("category", "Books")
+            startActivity(intent)
+        }
+        gaming.setOnClickListener{
+            val intent = Intent(this, AdminActivity::class.java)
+            intent.putExtra("category", "Gaming")
+            startActivity(intent)
+        }
+\end{minted}
+
+\newpage
+\subsubsection{AdminActivity}
+After Choosing a Category in the AdminPanelActivity the setOnClickListener will send the user to the AdminActivity here the Products are added with a Name, Desc and Price. The user will also choose the image that will be displayed in the RecyclerView after a user logs in.
+
+\begin{figure}[h!]
+	\caption{Admin Panel View - Activity\_admin\_panel\.XML}
+	\label{image:myImageName}
+	\centering
+	\includegraphics[width=0.45\textwidth]{Images/admin_view.png}
+	\includegraphics[width=0.45\textwidth]{Images/admin_design.png}
+\end{figure}
+
+
+\subsubsection{Saving Products to Database}
+
+1. Initialize all the needed Views
+\begin{minted}{kotlin}
+    CategoryName = getIntent().getExtras()?.get("category").toString()
+    ProductImageRef = FirebaseStorage.getInstance().reference.child("Product Images")
+    ProductRef = FirebaseDatabase.getInstance().reference.child("Products")
+    InputProductImage = findViewById(R.id.select_product)
+    InputProductName = findViewById(R.id.product_name)
+    InputProductDesc =  findViewById(R.id.product_desc)
+    InputProductPrice = findViewById(R.id.product_price)
+    AddProductButton =  findViewById(R.id.add_new_product)
+    loadingBar = ProgressDialog(this)
+\end{minted}
+
+2. Set up OnClickListerners
+\begin{minted}{kotlin}
+    //OnClickListeners
+    InputProductImage.setOnClickListener{
+        openProducts()
+    }
+
+    AddProductButton.setOnClickListener{
+        validateProducts()
+    }
+\end{minted}
+
+3. Validation
+Before saving any to the database, validation to be sure all fields are appropriately filled is needed. If all fields are not empty the storeProductInfo() function will be called to store the details
+\begin{minted}{kotlin}
+    private fun validateProducts() {
+    Desc = InputProductDesc.getText().toString()
+    Price = InputProductPrice.getText().toString()
+    Prod_Name = InputProductName.getText().toString()
+
+    if(TextUtils.isEmpty(Desc)){
+        Toast.makeText(this, "Please write a Product Desc ", Toast.LENGTH_SHORT).show()
+    }
+    else if(TextUtils.isEmpty(Price)){
+        Toast.makeText(this, "Please write a Product Price ", Toast.LENGTH_SHORT).show()
+    }
+    else if(TextUtils.isEmpty(Prod_Name)){
+        Toast.makeText(this, "Please write a Product Name ", Toast.LENGTH_SHORT).show()
+    }
+    else{
+        storeProductInfo()
+    }
+}
+\end{minted}
+
+4. Storing the Product Details
+
+First we must declare all the necessary variables
+
+\begin{minted}{kotlin}
+private fun storeProductInfo() {
+    loadingBar.setTitle("Adding a Product.. ")
+    loadingBar.setMessage("Please wait, while we add the product.. ")
+    loadingBar.setCanceledOnTouchOutside(false)
+    loadingBar.show()
+
+    var c = Calendar.getInstance()
+
+    var currentDate = SimpleDateFormat("MMM dd, yyyy")
+    saveCurrentDate = currentDate.format(c.time)
+
+    var currentTime = SimpleDateFormat("HH:mm:ss a")
+    saveCurrentTime = currentTime.format(c.time)
+
+    //Create a Random key
+    productKey = saveCurrentDate + saveCurrentTime
+
+    //Store Img in Firebase - https://firebase.google.com/docs/storage/android/upload-files#get_a_download_url
+    var filePath = ProductImageRef.child(ImageUri.lastPathSegment + productKey + ".jpg")
+    val ut = filePath.putFile(ImageUri)
+    
+\end{minted}
+
+We now have all the necessary variables to create a product in the database.\newline
+
+5. Validation and Storing Image
+Before calling the finally function that will store all the products details we must validate and store the Image so it can be put in the HashMap which will then put the product details into the database.
+
+\begin{minted}{kotlin}
+val urlTask = ut.continueWithTask { task ->
+        if (!task.isSuccessful) {
+            task.exception?.let {
+                throw it
+            }
+        }
+        downloadImageUrl = filePath.downloadUrl.toString()
+        return@continueWithTask filePath.downloadUrl
+    }.addOnCompleteListener { task ->
+        if (task.isSuccessful) {
+            downloadImageUrl = task.result.toString()
+            Toast.makeText(this@AdminActivity, "Product Image Uploaded ", Toast.LENGTH_SHORT).show()
+            saveToDatabase()
+        } else {
+            loadingBar.dismiss()
+            var ex = task.exception.toString()
+            Toast.makeText(this@AdminActivity, "Error: $ex", Toast.LENGTH_SHORT).show()
+
+        }
+    }.addOnFailureListener {task ->
+        var ex = task.cause.toString()
+        Toast.makeText(this@AdminActivity, "Error: $ex", Toast.LENGTH_SHORT).show()
+        loadingBar.dismiss()
+    }
+}
 
 \end{minted}
 \newpage
-\subsubsection{Login Verification}
-4. This is the last step for the user to Login. this method will called in the LoginUser method to verify that the details the user inputs are valid. If they're valid the user will be sent to the HomeAcivity page where they will see Products.
+6. Saving to Database
 \begin{minted}{kotlin}
-private fun AllowAccessToAccount(phone: String, password: String) {
+private fun saveToDatabase() {
+    var pMap:HashMap<String, Any> = HashMap()
+    pMap.put("pid", productKey)
+    pMap.put("date", saveCurrentDate)
+    pMap.put("time", saveCurrentTime)
+    pMap.put("description", Desc)
+    pMap.put("image", downloadImageUrl)
+    pMap.put("category", CategoryName)
+    pMap.put("price", Price)
+    pMap.put("pname", Prod_Name)
 
-val RootRef: DatabaseReference
-RootRef = FirebaseDatabase.getInstance().getReference()
+    ProductRef.child(productKey).updateChildren(pMap).addOnCompleteListener{ task ->
+        if (task.isSuccessful) {
+            //Sends user to Admin Panel
+            val intent = Intent(this@AdminActivity, AdminPanelActivity::class.java)
+            startActivity(intent)
 
-RootRef.addListenerForSingleValueEvent(object: ValueEventListener {
+            loadingBar.dismiss()
+            Toast.makeText(this@AdminActivity, "Product Added Successfully ", Toast.LENGTH_SHORT).show()
+        }
+        else{
+            loadingBar.dismiss()
+            var ex = task.exception.toString()
+            Toast.makeText(this@AdminActivity, "Error: $ex", Toast.LENGTH_SHORT).show()
 
-override fun onDataChange(dataSnapshot: DataSnapshot) {
-
-//var userData:Users
-if(dataSnapshot.child(parentDbName).child(phone).exists()){
-var usersData = dataSnapshot.child(parentDbName).child(phone).getValue(Users::class.java)
-
-if (usersData?.getPhone().equals(phone)){
-    if (usersData?.getPassword().equals(password)){
-        Toast.makeText(this@LoginActivity, "Login Successful", Toast.LENGTH_SHORT).show()
-        loadingBar.dismiss()
-        //Sends user to HomeActivity
-        val intent = Intent(this@LoginActivity, HomeActivity::class.java)
-        startActivity(intent)
+        }
     }
-}//getPhone if
+}
+
+\end{minted}
+
+After this the images are stored in Firebase Storage and product details in the Realtime database shown in Figure \ref{firebasestordb}
+\begin{figure}[h!]
+	\caption{Firebase Storage and Realtime Database}
+	\label{firebasestordb}
+	\centering
+	\includegraphics[width=0.45\textwidth]{Images/admin_products_storage_img.png}
+	\includegraphics[width=0.45\textwidth]{Images/admin_products_storage_db.png}
+\end{figure}
+\newpage
+
+\subsection{RecyclerView}
+The RecyclerView is used to display all the products stored on the Database.
+Implementation of this goes as follows:\newline
+
+\textbf{1. Create the Product layout in a CardView, products\_layout\.xml}
+\begin{figure}[h!]
+	\caption{Product Layout and Design}
+	\label{productlayout}
+	\centering
+	\includegraphics[width=0.6\textwidth]{Images/product_layout.png}
+\end{figure}
+
+\textbf{2. Create a Model Kotlin Class}
+\begin{minted}{kotlin}
+companion object{
+    public lateinit var category:String
+    public lateinit var date:String
+    public lateinit var description:String
+    public lateinit var image:String
+    public lateinit var pid:String
+    public lateinit var pname:String
+    public lateinit var price:String
+    public lateinit var time:String }
+    
+init {
+        lateinit var category:String
+        lateinit var date:String
+        lateinit var description:String
+        lateinit var image:String
+        lateinit var pid:String
+        lateinit var pname:String
+        lateinit var price:String
+        lateinit var time:String }
+    
+\end{minted}
+\newpage
+\textbf{3. Create a ProductViewHolder which implements ItemClickListener inferface}
+\begin{minted}{kotlin}
+class ProductView:RecyclerView.ViewHolder, View.OnClickListener{
+    var txtProdName:TextView
+    var txtProdDesc:TextView
+    var txtProdPrice:TextView
+    var txtImageView:ImageView
+    lateinit var listener: ItemClickListener
+    constructor(itemView: View) : super(itemView)
+
+    fun ProductView(itemView:View){
+        super.itemView
+        txtImageView = itemView.findViewById(R.id.product_card_img)
+        txtProdName = itemView.findViewById(R.id.product_card_name)
+        txtProdDesc = itemView.findViewById(R.id.product_card_desc)
+        txtProdPrice = itemView.findViewById(R.id.product_card_price)
+    }
+
+    init {
+        txtImageView = itemView.findViewById(R.id.product_card_img)
+        txtProdName = itemView.findViewById(R.id.product_card_name)
+        txtProdDesc = itemView.findViewById(R.id.product_card_desc)
+        txtProdPrice = itemView.findViewById(R.id.product_card_price)
+    }
+
+    fun setItemClickListener(listener: ItemClickListener){
+        this.listener = listener
+    }
 
 
+    override fun onClick(v: View?) {
+        listener.onClick(v!!, adapterPosition, false)
+    }
 }
-else{
-    Toast.makeText(this@LoginActivity, "Account with this " + phone
-                    + " Number does not exist", Toast.LENGTH_SHORT).show()
-    loadingBar.dismiss()
+
+\end{minted}
+
+\textbf{4. Finally display the recyclerView in the HomeActivity}
+\begin{minted}{kotlin}
+override fun onStart() {
+    super.onStart()
+
+    val options = FirebaseRecyclerOptions.Builder<Products>().setQuery(productsRef, Products::class.java).build()
+
+    val adapter:FirebaseRecyclerAdapter<Products, ProductView> = object:FirebaseRecyclerAdapter<Products, ProductView>(options) {
+        override fun onBindViewHolder(holder: ProductView, position: Int, model: Products) {
+            holder.txtProdName.setText(model.getPname())
+            holder.txtProdDesc.setText(model.getDescription())
+            holder.txtProdPrice.setText("Price: " + "€" + model.getPrice())       //"Price: ${price}$"
+            Picasso.get().load(model.getImage()).into(holder.txtImageView)
+        }
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductView {
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.products_layout, parent, false)
+            return ProductView(view)
+        }
+    }//adapter
+    recyclerView.adapter = adapter
+    adapter.startListening()
+}//onStart
+
+\end{minted}
+
+\begin{figure}[h!]
+	\caption{Items displayed in RecyclerView}
+	\label{productview}
+	\centering
+	\includegraphics[width=0.5\textwidth]{Images/recycle_view_products.png}
+\end{figure}
+\newpage
+
+\subsection{Settings}
+The settings are used for the user to edit there User Profile details.
+The user can choose a Profile image, as well as change there Phone Number, Name and Address
+
+\begin{figure}[h!]
+	\caption{View and Design - User Profile settings}
+	\label{productview}
+	\centering
+	\includegraphics[width=0.8\textwidth]{Images/user_profile_settings_change.png}
+\end{figure}
+
+The code for settings is located in the SettingsFragment, this fragment contains three different aspects: Allowing User to choose a Profile Image, Saving the Users Details and Displaying Users New Details
+
+\subsubsection{1. Allowing User to choose a Profile Image}
+Once the user chooses to change there profile image a onClickListener will trigger to create the process
+\begin{minted}{kotlin}
+profileChangeTxtBtn.setOnClickListener{ it: View? ->
+    check = "clicked"
+
+    // for fragment (DO NOT use `getActivity()`)
+    this.context?.let { it1 ->
+        CropImage.activity()
+            .setAspectRatio(1, 1)
+            .start(it1, this)
+\end{minted}
+
+Once triggered this will prompt the User to choose a folder in there phone and contains the images they want to display as there profile picture. Once an image is chosen the user will be prompted with a screen to Crop that image 
+\begin{figure}[h!]
+	\caption{Crop image for User Profile Picture}
+	\label{cropimg}
+	\centering
+	\includegraphics[width=0.6\textwidth]{Images/user_crop_img.png}
+\end{figure}
+\newpage
+\subsubsection{Saving Cropped Image}
+Once the User has chosen the cropped image that they like, a function onActivityResult will be called. This function will validate the cropped image as well as saving the image if it is suitable.
+
+\begin{minted}{kotlin}
+override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    super.onActivityResult(requestCode, resultCode, data)
+
+    if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
+        val result = CropImage.getActivityResult(data)
+        if (resultCode == RESULT_OK){
+            imageUri = result.uri
+            profileImageView.setImageURI(imageUri)
+        }else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE){
+            var error = result.error
+            Toast.makeText(this.context, "Error, please try again ", Toast.LENGTH_SHORT).show()
+        }
+    }
 }
+\end{minted}
+\newpage
+
+\subsubsection{2. Saving the Users Details}
+There is two separate functions for saving the User Details. One function uploadImage() contains code for uploading the Cropped Image that the user has chosen to the Database and updateUserInfo() will update users data if they wish to not choose to upload a new profile picture.
+
+\begin{figure}[h!]
+	\caption{Update User Details}
+	\label{userdetails}
+	\centering
+	\includegraphics[width=0.6\textwidth]{Images/setting_updating.png}
+\end{figure}
+\newpage
+
+\subsubsection{Updating all user details}
+Once the user clicks the update button shown in Figure \ref{userdetails} it will trigger the onClickListener
+\begin{minted}{kotlin}
+saveTextBtn.setOnClickListener{ it: View? ->
+    if (check == "clicked"){
+        saveUserInfo()
+    }
+    else{
+        updateUserInfo()
+    }
 }
 \end{minted}
 
+SaveUserInfo() is called when the user decides to upload a image, this will first validate that the user has entered details before calling the uploadImage() function
 
+\begin{minted}{kotlin}
+private fun saveUserInfo() {
+    when {
+        TextUtils.isEmpty(fullNameEditText.text.toString()) 
+        -> Toast.makeText(this.context, "Must have a name ", Toast.LENGTH_SHORT).show()
+        TextUtils.isEmpty(addressEditText.text.toString()) 
+        -> Toast.makeText(this.context, "Must have a address ", Toast.LENGTH_SHORT).show()
+        TextUtils.isEmpty(userPhoneEditText.text.toString()) 
+        -> Toast.makeText(this.context, "Must have a phone number ", Toast.LENGTH_SHORT).show()
+        check == "clicked" -> uploadImage()
+    }
+}
+\end{minted}
+\newpage
+\subsubsection{Upload Image and Save Data}
+Once triggered the process of saving the users detail will now start
+\begin{minted}{kotlin}
+run {
+    val fileRef =
+        storageProfilePicRef.child(Prevalent.currentOnlineUser.getPhone() + ".jpg")
+    uploadTask = fileRef.putFile(imageUri)
 
+    val ut = uploadTask.continueWithTask { task ->
+        if (!task.isSuccessful) {
+            task.exception?.let {
+                throw it
+            }
+        }
+        myUrl = fileRef.downloadUrl.toString()
+        return@continueWithTask fileRef.downloadUrl
+    }.addOnCompleteListener { task ->
+        if (task.isSuccessful) {
+            val downloadUrl = task.result
+            myUrl = downloadUrl.toString()
 
-\subsection{Navigation Bars}
-\subsection{About}
+            var ref = FirebaseDatabase.getInstance().reference.child("Users")
+            var userMap:HashMap<String, Any> = HashMap()
+            userMap["name"] = fullNameEditText.text.toString()
+            userMap["address"] = addressEditText.text.toString()
+            userMap["phoneOrder"] = userPhoneEditText.text.toString()
+            //userMap["phone"] = userPhoneEditText.text.toString()
+            userMap["image"] = myUrl
+            ref.child(Prevalent.currentOnlineUser.getPhone()).updateChildren(userMap)
 
-\section{Back-End Architecture}
-\subsection{Firebase Real-Time Database}
-\subsection{Picasso}
+            progressDialog.dismiss()
+
+            val intent = Intent(activity, HomeActivity::class.java)
+            startActivity(intent)
+            Toast.makeText(this.context, "Profile Updated! ", Toast.LENGTH_SHORT).show()
+        }
+      
+\end{minted}
+\newpage
+
+\subsubsection{3. Display new User Details}
+After saving all the details the User is sent to the HomeActivity, if user returns to the settings page there new details will be displayed shown in Figure \ref{userdetails}, the function displayUserInfo() is used to achieve this
+
+\begin{minted}{kotlin}
+private fun displayUserInfo(profileImageView: CircleImageView?, fullNameEditText: EditText?,
+userPhoneEditText: EditText?, addressEditText: EditText?) {
+    val usersRef = FirebaseDatabase.getInstance().reference.child("Users").child(Prevalent.currentOnlineUser.getPhone())
+
+    usersRef.addValueEventListener(object: ValueEventListener {
+        override fun onCancelled(p0: DatabaseError) {
+        }
+
+        override fun onDataChange(dataSnapshot: DataSnapshot) {
+            if (dataSnapshot.exists()){
+                if (dataSnapshot.child("image").exists()){
+                    val image:String = dataSnapshot.child("image").value.toString()
+                    val name:String = dataSnapshot.child("name").value.toString()
+                    val phone:String = dataSnapshot.child("phone").value.toString()
+                    val address:String = dataSnapshot.child("address").value.toString()
+
+                    Picasso.get().load(image).into(profileImageView)
+                    fullNameEditText?.setText(name)
+                    userPhoneEditText?.setText(phone)
+                    addressEditText?.setText(address)
+                }
+            }
+        }
+    })//EventListener
+}//displayUserInfo
+\end{minted}

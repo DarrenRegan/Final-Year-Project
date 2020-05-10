@@ -1,26 +1,56 @@
 \chapter{System Evaluation}
 
-
-As many pages as needed.
-• Prove that your software is robust. How? Testing etc.
-• Use performance benchmarks (space and time) if algorithmic.
-• Measure the outcomes / outputs of your system / software against the
-objectives from the Introduction.
-• Highlight any limitations or opportunities in your approach or technologies
-used.
-
 \section{Robust}
-\subsection{Error Handling}
-\subsection{Testing}
-\subsection{Speed}
+It was very important from me to have this application be robust as a basic requirement. I did this by following Android Jetpack\cite{android_jetpack} guidelines that Accelerates Development, Eliminates boilerplate code and helps build higher quality, robust apps.
+Using Android Jetpack, i will list some of the features used.
+
+\subsection{Benchmark}
+The Jetpack Benchmark library allows you to quickly benchmark your Kotlin-based or Java-based code from within Android Studio. The library handles warmup, measures your code performance, and outputs benchmarking results to the Android Studio console.\newline
+
+I used this with its integration into Android Studio for testing the RecyclerView performance, this helped with receiving accurate logs that helped with debugging.
+
+\subsection{Multidex}
+In my application i quickly ran into a problem where my app and the libraries references exceed 65,536 methods. This caused many issues for me but was fixed with the implemention of Mutlidex
+
+\subsection{Navigation}
+The use of Jetpack guidelines for implementing Navigation made the navigation extremely fast compared to my first implementation.
+The Navigation component consists of three key parts, Navigation Graph, NavHost and NavController which was detailed in the Navigation section of System Design.\newline
+Implementing the compontent features provides a number of benefits
+\begin{itemize}
+    \item Handling fragment transactions
+    \item Handling Up and Back actions by default
+    \item Provides standardized resources for animations and transitions.
+    \item Implementing and handling deep linking.
+    \item Including Navigation UI patterns, such as navigation drawers and bottom navigation, with minimal additional work.
+    \item Safe Args - a Gradle plugin that provides type safety when navigating and passing data between destinations.
+    \item ViewModel support - you can scope a ViewModel to a navigation graph to share UI-related data between the graph's destinations.
+\end{itemize}
+
+\subsection{Lifecycles}
+Implementing Lifecycle for my navigation fragments contributed heavily to no errors or performance issues.
+Lifecycle-aware components perform actions in response to a change in the lifecycle status of another component, such as activities and fragments. These components help you produce better-organized, and often lighter-weight code, that is easier to maintain.\newline
+
+By following the Best practices for lifecycle-aware components \cite{android_lifecycles} i was able to keep my UI controllers (activities and fragments) as lean as possible.
+
+\subsection{Speed of App and Saving to Database}
+The application components load very fast thanks to following the Jetpack guidelines. Using the Firebase Realtime Database once a product or user details buttons are pressed the Database is updated extremely fast within one to three seconds.
 
 \section{Accessibility}
+As a E-Commerce focused application Accessibility is the highest priority, as people of all ages may use your application. Because of this your application must emphasize a Minimalistic UI. The user should perform the least amount of tasks as possible to navigate your application. To reflect this ideal i will reflect on how i think i accomplished this task.
 \subsection{Minimalistic}
+With the Goal of a Minimalistic UI i chose to only display very clear buttons, images etc. The buttons are generally very large so that the user cannot be overwhelmed by an influx of information. Each section of the app contains at most two buttons and a few text fields to accomplish this task.
 \subsection{Intuitive}
+Along with the Minimalistic UI the application is Intuitive as there is no complicated or technical information displayed. Instead there is very clear text on each action so that the vast majority of the users will at a glance know exactly what each page does.
 
 \section{Evaluation of Objectives}
-\subsection{Scalable}
-\subsection{Can use as a template for any company}
-\subsection{Responsive}
-\subsection{Statistics}
-talk about how firebase already has this built in and further coding was too advanced
+\subsection{Learning Android Development}
+My main goal for this project was to learn Android Development, as i am interested in choosing Android Development as my Career option. Through creating this project i have very clearing accomplished this goal. Along with using Google Recommend design principles and through sheer hours of working with Android Studio i have become accustomed to working with Android Development and gained the understanding of building a high-quality application.
+
+\subsection{Features}
+My goals for features where to high, while i feel like i gained exactly what i wanted for this project, i set my objectives to high without realising of long it won't take to learn Kotlin, Android Development and Android Studio features at the same time. I would like to revisit the project in the summer to add more features as i now have a good grasp of development and have learned from my mistakes with Scope-Creep and planning
+
+\subsection{Scalable and Re-Usable}
+The application scales very well and functions are set with Googles recommend standards. The application is re-usable for any type of business and implementing a new feature is extremely easy with how the application is set up.
+
+\subsection{Responsiveness}
+My goal for the project to be responsive worked out well thanks to the development principles that i followed. Not only is the Navigation very fast, the read/write from the database is almost instantaneous which i am very happy with/

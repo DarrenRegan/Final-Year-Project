@@ -11,6 +11,7 @@ Topics:
     \item Kotlin/Java comparison
     \item Fire-base
     \item Picasso
+    \item Paper
     \item Android Studio/IntelliJ
     \item Native Applications
     \item Hybrid Applications
@@ -423,7 +424,55 @@ For development you can enable the display of a colored ribbon which indicates t
     \includegraphics[width=12cm,height=12 cm,keepaspectratio]{Images/picassodebug.png}
 \end{center}
 \newpage
+%----------------------------------------------------------------------------------------
+% PAPER - https://github.com/pilgr/Paper
+%----------------------------------------------------------------------------------------
+\subsection{Paper}
+\par
+\medskip
+Paper is a fast NoSQL-like storage for Java/Kotlin objects on Android with automatic schema migration support.
+Paper's aim is to provide a simple yet fast object storage option for Android. It allows to use Java/Kotlin classes as is: without annotations, factory methods, mandatory class extensions etc. Moreover adding or removing fields to data classes is no longer a pain – all data structure changes are handled automatically.\newline
 
+Using Paper is very easy and extremely useful, for this project its used to save the User's login information in memory so when the user opens up the application after exiting they will automatically be logged in.\newline
+
+\textbf{Initialize Paper \cite{paper}}
+Initializing of Paper is needed in the onCreate or OnCreateView in the Activities were it is used
+\begin{minted}{kotlin}
+Paper.init(context);
+\end{minted}
+
+\textbf{Threading \cite{paper}}
+\begin{itemize}
+    \item Paper.init() should be called in UI thread;
+    \item All other APIs (write, read etc.) are thread-safe and obviously must be called outside of UI thread. Reading/writing for different keys can be done in parallel.
+\end{itemize}
+
+\textbf{Save \cite{paper}}
+Save any object, Map, List, HashMap etc. including all internal objects. Use your existing data classes as is. Note that key is used as file name to store the data and so cannot contain symbols like\/.
+
+\begin{minted}{kotlin}
+List<Person> contacts = ...
+Paper.book().write("contacts", contacts);
+\end{minted}
+
+\textbf{Read \cite{paper}}
+Read data objects is as easy as
+\begin{minted}{kotlin}
+List<Person> = Paper.book().read("contacts");
+\end{minted}
+the instantiated class is exactly the one used to save data. Limited changes to the class structure are handled automatically. See Handle data class changes.
+
+Use default values if object doesn't exist in the storage.
+\begin{minted}{kotlin}
+List<Person> = Paper.book().read("contacts", new ArrayList<>());
+\end{minted}
+
+\textbf{Destroy \cite{paper}}
+To Remove all keys for the given Book. Paper.init() must be called prior calling destroy().
+This is remove all user login data from memory which is called on logout.
+\begin{minted}{kotlin}
+Paper.book().destroy();
+\end{minted}
 %----------------------------------------------------------------------------------------
 % NATIVE APPLICATIONS
 %----------------------------------------------------------------------------------------

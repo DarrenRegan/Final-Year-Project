@@ -28,25 +28,27 @@ git clone https://github.com/DarrenRegan/Final-Year-Project.git
 2. Open Project in Android Studio
 
 ```
-asd
+Build project
 ```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Testing 
 
-Testing & Test Plan are provided in an excel file included in this repo called Test Plan.xlsx
+Testing 
 
 Testing Devices used
 * Windows 10 Home & Pro edition - Laptop & Desktop
-* Android Studio Emulators
+* Android Studio Emulators - Targets SDKs from 21 - 29 - Tested primaryly on Pixel 2 API 29 (Android 10)
 
-### Break down into end to end tests
+### Accounts for Testing
 
-Explain what these tests test and why
+If you are testing this application on your device and experiencing any crashes here are the User and Admin Details used for testing the application.
 
 ```
-Give an example
+Admin UserID: 0831767232
+Admin Password: admin
+
+User UserID: 888
+User Password: 177
 ```
 
 ### And coding style tests
@@ -81,6 +83,8 @@ This project is licensed under the GNU General Public License - see the [LICENSE
 
 * [Firebase Docs](https://firebase.google.com/docs)
 * [Kotlin Docs](https://kotlinlang.org/docs/reference/)
+* [Android Jetpack](https://developer.android.com/jetpack)
+* [Android Jetpack Docs](https://developer.android.com/jetpack/docs/guide)
 * [Badges/Shields for README](https://github.com/badges/shields)
 
 **Learning Material**
@@ -89,13 +93,3 @@ Please refer to Dissertation - Downloadable at top of README for a full list of 
 
 * https://developer.android.com/kotlin/learn
 * https://codelabs.developers.google.com/codelabs/build-your-first-android-app-kotlin/#0
-* http://rey5137.com/material/
-* [Validation for Database](https://firebaseopensource.com/projects/rosariopfernandes/firextensions/tutorials/realtime-database.md/)
-
-**React Native vs Kotlin Article/Blogs**
-
-* https://stackshare.io/stackups/kotlin-vs-react-native)
-* https://www.netguru.com/codestories/react-native-vs-kotlin-multiplatform
-* https://hackernoon.com/top-pros-cons-comparison-react-native-vs-kotlin-2a0dfd1df3e3
-* https://dzone.com/articles/kotlin-vs-react-native-which-is-better
-
