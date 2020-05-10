@@ -48,6 +48,9 @@ Admin Password: admin
 User UserID: 888
 User Password: 177
 ```
+## Screencast
+
+* [Demonstration of Software](https://youtu.be/lY1Y_oAYKdc)
 
 ## Built With
 
